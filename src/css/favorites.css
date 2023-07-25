@@ -1,4 +1,8 @@
 @import url('./common.css');
-@import url('./sections/body.css');
+@import url('./sections/favor-body.css');
 @import url('./sections/header.css');
 @import url('./sections/order-now.css');
+@import url('./sections/favor-gallery.css');
+@import url('./sections/see-recipe.css');
+@import url('./sections/give-rating.css');
+@import url('./sections/pagination.css');

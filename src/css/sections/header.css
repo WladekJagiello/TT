@@ -177,6 +177,10 @@
   transition: 250ms;
 }
 
+.fav-link {
+  color: var(--black-color);
+}
+
 .nav-link {
   font-weight: 500;
   font-size: 12px;

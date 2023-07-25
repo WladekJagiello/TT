@@ -1,0 +1,174 @@
+.favorites-gallery {
+  width: 375px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tags-container {
+  width: 375px;
+  margin-left: 0;
+  padding-left: 20px;
+  overflow: visible;
+}
+
+.tags {
+  overflow: scroll;
+}
+
+.tags-list {
+  display: flex;
+  padding-top: 40px;
+  overflow: visible;
+}
+
+.favorites-tags {
+  padding: 14px 18px;
+  margin-right: 12px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  color: rgba(5, 5, 5, 0.3);
+  border-radius: 15px;
+  border: 1px solid rgba(5, 5, 5, 0.2);
+}
+
+.dark-theme .favorites-tags {
+  color: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.favorites-tags:hover {
+  color: var(--light-color);
+  background: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+@media screen and (min-width: 768px) {
+  .tags-container {
+    overflow: visible;
+  }
+
+  .tags {
+    width: 768px;
+    padding-left: 32px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-x: scroll;
+  }
+
+  .tags::-webkit-scrollbar {
+    height: 15px;
+  }
+
+  .tags::-webkit-scrollbar-thumb {
+    border-radius: 16px;
+    border: 0;
+    background: inherit;
+    transition: 250ms;
+  }
+
+  .dark-theme .tags::-webkit-scrollbar-thumb {
+    border: 0;
+    background: inherit;
+    transition: 250ms;
+  }
+
+  .tags::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+    transition: 250ms;
+  }
+
+  .tags-container {
+    padding: 0;
+  }
+
+  .tags-list.tags-list-fav {
+    width: 768;
+    padding-top: 64px;
+    padding-bottom: 16px;
+  }
+
+  .favorites-tags {
+    margin-right: 15px;
+  }
+
+  .favorites-tags {
+    margin-right: 15px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .favorites-gallery {
+    width: 768px;
+  }
+
+  .favorites-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .card-recipe.card-recipe-fav {
+    position: relative;
+    width: 224px;
+    height: 244px;
+    border-radius: 15px;
+  }
+
+  .heart-icon.heart-icon-fav {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    margin: 0;
+  }
+
+  .card-recipe-title.card-title-fav {
+    margin-top: 123px;
+    margin-left: 16px;
+  }
+
+  .recipe-block.recipe-block-fav {
+    width: 192px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .tags {
+    width: 1280px;
+    padding-left: 100px;
+  }
+
+  .tags-list.tags-list-fav {
+    width: 1280px;
+  }
+
+  .card-recipe.card-recipe-fav {
+    position: relative;
+    width: 258px;
+    height: 287px;
+    border-radius: 15px;
+  }
+
+  .favorites-gallery {
+    width: 1080px;
+  }
+
+  .favorites-list {
+    gap: 32px 16px;
+  }
+
+  .card-recipe-title.card-title-fav {
+    margin-top: 166px;
+  }
+
+  .recipe-block.recipe-block-fav {
+    width: 226px;
+  }
+
+  .pagination-wrapper {
+    display: flex;
+    margin-left: auto !important;
+    margin-right: auto;
+  }
+}
