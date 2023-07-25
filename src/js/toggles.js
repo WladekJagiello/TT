@@ -17,7 +17,9 @@ window.addEventListener('DOMContentLoaded', function () {
 
   linkEls.forEach(function (linkEl) {
     if (linkEl.href.includes(location.pathname)) {
-      linkEl.classList.toggle('active');
+      linkEl.classList.add('active');
+    } else {
+      linkEl.classList.remove('active');
     }
   });
 });

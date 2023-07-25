@@ -27,19 +27,6 @@ formEl.addEventListener('submit', event => {
     comment: `${comment}`,
   };
 
-  // const { elements } = event.currentTarget;
-
-  // let dataForm;
-
-  // dataForm = {
-  //   [`"name"`]: elements.name.value.trim(),
-  //   [`"phone"`]: elements.tel.value.trim(),
-  //   [`"email"`]: elements.email.value.trim(),
-  //   [`"comment"`]: elements.comment.value.trim(),
-  // };
-
-  console.log(dataForm);
-
   orderNow(dataForm);
 
   toggleModal();
