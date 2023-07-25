@@ -5,9 +5,9 @@
     <link rel="icon" type="image/svg+xml" href="/TT/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Testy treats</title>
-    <script type="module" crossorigin src="/TT/assets/index-07cbe4e2.js"></script>
-    <link rel="modulepreload" crossorigin href="/TT/assets/order-now-3fa6f5a8.js">
-    <link rel="stylesheet" href="/TT/assets/index-40efa57f.css">
+    <script type="module" crossorigin src="/TT/assets/index-627df4a7.js"></script>
+    <link rel="modulepreload" crossorigin href="/TT/assets/order-now-ad4dd74e.js">
+    <link rel="stylesheet" href="/TT/assets/index-8e50a27f.css">
   </head>
 
   <body>
@@ -87,7 +87,106 @@
 </section>
 
 
-    <section></section>
+    <section class="gallery-filters">
+      <div class="container filters-container">
+        <div class="categories-wrapper">
+  <div class="categories">
+    <button class="button-all-categories active" type="button">
+      All categories
+    </button>
+    <ul class="categories-list"></ul>
+  </div>
+
+  <div class="popular-recipes">
+    <h2 class="popular-recipes-title">popular recipes</h2>
+
+    <ul class="recipes-list"></ul>
+  </div>
+</div>
+
+
+        <div class="gallery-wrapper">
+          <div class="search-container">
+  <div class="search-label">
+    <span class="filters-span">Search</span>
+    <input class="search-input" type="text" placeholder="Enter Text" />
+    <svg class="search-icon" width="18" height="18">
+      <use href="/TT/assets/sprite-96c1c630.svg#search"></use>
+    </svg>
+    <button class="reset-btn" type="button">
+      <svg class="close-search-icon" width="18" height="18">
+        <use href="/TT/assets/sprite-96c1c630.svg#x-black"></use>
+      </svg>
+    </button>
+  </div>
+
+  <div class="time-label">
+    <span class="filters-span">Time</span>
+    <div class="time-input">
+      <button class="time-placeholder" type="button">0 min</button>
+      <svg class="select-icon time-icon" width="18" height="18">
+        <use href="/TT/assets/sprite-96c1c630.svg#select-down"></use>
+      </svg>
+      <ul class="time-list">
+        <!-- ####### markup in filters.js ####### -->
+      </ul>
+    </div>
+  </div>
+
+  <div class="area-label">
+    <span class="filters-span">Area</span>
+    <div class="area-input">
+      <button class="area-placeholder" type="button">Region</button>
+      <svg class="select-icon area-icon" width="18" height="18">
+        <use href="/TT/assets/sprite-96c1c630.svg#select-down"></use>
+      </svg>
+      <ul class="area-list">
+        <!-- ####### markup in filters.js ####### -->
+      </ul>
+    </div>
+  </div>
+
+  <div class="ingredient-label">
+    <span class="filters-span">Ingredient</span>
+    <div class="ingredient-input">
+      <button class="ingredient-placeholder" type="button">Product</button>
+      <svg class="select-icon ingredient-icon" width="18" height="18">
+        <use href="/TT/assets/sprite-96c1c630.svg#select-down"></use>
+      </svg>
+      <ul class="ingredient-list">
+        <!-- ####### markup in filters.js ####### -->
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+          <div class="gallery-container">
+            <ul class="gallery-list">
+              <!-- ####### markup in gallery.js ####### -->
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="pagination-wrapper">
+  <div class="tui-pagination" id="pagination">
+    <!-- ####### markup in rendering.js ####### -->
+  </div>
+</div>
+<section class="footer"></section>
+
+<!-- ####### styles in popular-recipes.css ####### -->
+
+<div class="popular-recipes-mobile">
+  <h2 class="popular-recipes-title">popular recipes</h2>
+
+  <ul class="recipes-list">
+    <!-- ####### markup in popular-recipes.js ####### -->
+  </ul>
+</div>
+
+    </section>
 
     <!-- ####### modals ####### -->
 
