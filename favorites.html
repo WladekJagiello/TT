@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Favorites</title>
+    <script type="module" crossorigin src="/tasty-treats/assets/order-now-4becf58b.js"></script>
+    <link rel="stylesheet" href="/tasty-treats/assets/favorites-e1ca1cc6.css">
+  </head>
+
+  <body>
+    <header class="header">
+  <div class="container header-container">
+    <ul class="navigation">
+      <li class="nav-item">
+        <a class="nav-link home-link" href="./index.html">Home</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="./favorites.html">Favorites</a>
+      </li>
+    </ul>
+
+    <div class="logo">
+      <a class="logo-tasty" href="./index.html">
+        tasty<span class="logo-treats">treats.</span>
+      </a>
+    </div>
+
+    <!-- <div class="start">
+          <img
+            class="start-img"
+            src="./images/free-icon-food-service-4483612.png"
+            alt="hi!"
+          />
+        </div> -->
+
+    <div class="buttons">
+      <button class="basket order-open">
+        <svg class="basket-icon" width="24" height="24">
+          <use class="icon" href="/tasty-treats/assets/sprite-96c1c630.svg#basket"></use>
+        </svg>
+      </button>
+
+      <button class="open-menu" type="button">
+        <svg class="menu-open-icon" width="32" height="32">
+          <use href="/tasty-treats/assets/sprite-96c1c630.svg#burger"></use>
+        </svg>
+      </button>
+
+      <label class="toggle-theme">
+        <input class="switch" type="checkbox" />
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+</header>
+
+
+    <section></section>
+
+    <!-- ####### modals ####### -->
+
+    <!-- ####### styles in header.css ####### -->
+
+<div class="mobile-menu">
+  <button class="close-menu" type="button">
+    <svg class="menu-close-icon" width="32" height="32">
+      <use href="/tasty-treats/assets/sprite-96c1c630.svg#x"></use>
+    </svg>
+  </button>
+
+  <ul class="mobile-navigation">
+    <li class="nav-item">
+      <a class="nav-link" href="./index.html">Home</a>
+    </li>
+
+    <li class="nav-item favorites-item">
+      <a class="nav-link" href="./favorites.html">Favorites</a>
+    </li>
+  </ul>
+
+  <label class="toggle-theme-mobile">
+    <input class="switch" type="checkbox" />
+    <span class="slider"></span>
+  </label>
+</div>
+
+
+    <div class="order-backdrop">
+  <div class="order-modal">
+    <button class="order-close" type="button">
+      <svg class="close-modal-icon" width="20" height="20">
+        <use href="/tasty-treats/assets/sprite-96c1c630.svg#x-black"></use>
+      </svg>
+    </button>
+
+    <b class="order-title">Order now</b>
+
+    <form class="order-form" method="POST">
+      <label class="order-label">
+        <span class="order-span">Name</span>
+        <input
+          class="order-input"
+          type="text"
+          id="name"
+          placeholder="Name"
+          required
+        />
+      </label>
+
+      <label class="order-label">
+        <span class="order-span">Phone number</span>
+        <input
+          class="order-input"
+          type="tel"
+          id="phone"
+          placeholder="+380000000000"
+          required
+        />
+      </label>
+
+      <label class="order-label">
+        <span class="order-span">Email</span>
+        <input
+          class="order-input"
+          type="email"
+          id="email"
+          placeholder="Email"
+          required
+        />
+      </label>
+
+      <label class="order-label">
+        <span class="order-span">Comment</span>
+        <textarea
+          class="order-textarea"
+          id="comment"
+          placeholder="Comment"
+        ></textarea>
+      </label>
+
+      <button class="order-send" type="submit">Send</button>
+    </form>
+  </div>
+</div>
+
+
+    
+  </body>
+</html>
