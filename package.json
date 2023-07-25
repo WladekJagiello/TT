@@ -1,11 +1,11 @@
 {
-  "name": "tasty-treats",
+  "name": "tt",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/tasty-treats/",
+    "build": "vite build --base=/TT/",
     "preview": "vite preview"
   },
   "devDependencies": {
