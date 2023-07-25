@@ -236,8 +236,8 @@
 }
 
 .swiper-pagination-bullets .swiper-pagination-bullet {
-  width: 4.5px;
-  height: 4.5px;
+  width: 4px;
+  height: 4px;
   opacity: 1;
   background: var(--black-color);
   transition: 250ms;
@@ -254,7 +254,7 @@
 }
 
 .swiper-pagination-bullet {
-  margin: 0 var(--swiper-pagination-bullet-horizontal-gap, 2px) !important;
+  margin: 0 var(--swiper-pagination-bullet-horizontal-gap, 1.5px) !important;
 }
 
 @media screen and (min-width: 768px) {
@@ -419,12 +419,12 @@
   }
 
   .swiper-pagination-bullets .swiper-pagination-bullet {
-    width: 4.5px;
-    height: 4.5px;
+    width: 5px;
+    height: 5px;
   }
 
   .swiper-pagination-bullet {
-    margin: 3 var(--swiper-pagination-bullet-horizontal-gap, 2.5px);
+    margin-right: 4px;
   }
 }
 
