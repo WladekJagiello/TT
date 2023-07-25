@@ -1,0 +1,377 @@
+.see-backdrop {
+  opacity: 0;
+  transition: all 300ms linear;
+}
+
+.see-backdrop.active {
+  position: fixed;
+  opacity: 1;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(5, 5, 5, 0.4);
+  transition: all 300ms linear;
+}
+
+.dark-theme .see-backdrop.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: all 300ms linear;
+}
+
+.see-modal {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 336px;
+  padding: 20px;
+  background-color: var(--white-color);
+  border-radius: 15px;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, 0) scale(0.75);
+  transition: all 300ms linear;
+}
+
+.dark-theme .see-modal {
+  background-color: var(--black-color);
+}
+
+.see-backdrop.active .see-modal {
+  visibility: visible;
+  pointer-events: all;
+  transform: translate(-50%, 0) scale(1);
+  transition: all 300ms linear;
+}
+
+.see-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  border: 0;
+  background: transparent;
+}
+
+.close-see-icon {
+  stroke: var(--black-color);
+  transition: 250ms;
+}
+
+.dark-theme .close-see-icon {
+  stroke: var(--white-color);
+  transition: 250ms;
+}
+
+.close-see-icon:hover {
+  stroke: var(--primary-color);
+  transform: scale(1.5) rotate(90deg);
+  transition: 250ms;
+}
+
+/* ####### markup in see-recipe.js #######  */
+
+.video {
+  display: flex;
+  width: 295px;
+  height: 295px;
+  margin-top: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.recipe-video {
+  width: 100%;
+}
+
+.thumb {
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+.recipe-name {
+  margin-top: 20px;
+  margin-bottom: 14px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  text-transform: uppercase;
+}
+
+.dark-theme .recipe-name {
+  color: var(--white-color);
+}
+
+.rating-span {
+  margin-right: 6px;
+}
+
+.dark-theme .rating-span,
+.dark-theme .time-span {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.rating-span,
+.time-span {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  color: rgba(5, 5, 5, 0.5);
+}
+
+.see {
+  padding-bottom: 2px;
+  margin-right: 0;
+}
+
+.see-star {
+  fill: var(--black-color);
+  opacity: 0.2;
+}
+
+.dark-theme .see-star {
+  fill: rgba(255, 255, 255, 0.9) !important;
+}
+
+.time-span {
+  margin-left: 16px;
+}
+
+.rating-time {
+  display: flex;
+  align-items: center;
+  margin-bottom: 33px;
+}
+
+.ingredients-recipe {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(5, 5, 5, 0.1);
+  margin-bottom: 20px;
+}
+
+.dark-theme .ingredients-recipe {
+  color: var(--white-color);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ingredient {
+  margin-right: auto;
+}
+
+.ingredient,
+.measure {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.measure {
+  color: rgba(5, 5, 5, 0.5);
+  text-align: right;
+}
+
+.dark-theme .measure {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.tag {
+  display: inline-block;
+  margin-top: 20px;
+  margin-right: 8px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  padding: 8px 16px;
+  border: 1px solid rgba(5, 5, 5, 0.2);
+  border-radius: 35px;
+}
+
+.dark-theme .tag {
+  color: var(--white-color);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.instructions {
+  margin-top: 24px;
+  margin-bottom: 40px;
+  font-size: 14px;
+  line-height: 18px;
+  color: rgba(5, 5, 5, 0.8);
+}
+
+.dark-theme .instructions {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.block-btn {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.to-favorite,
+.give-rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 14px;
+  border: 0;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 250ms;
+}
+
+.to-favorite {
+  width: 148px;
+  height: 41px;
+  color: var(--white-color);
+  background: var(--primary-color);
+}
+
+.to-favorite:hover {
+  color: var(--black-color);
+  transition: 250ms;
+}
+
+.give-rating {
+  width: 133px;
+  height: 41px;
+  color: var(--black-color);
+  background: transparent;
+  border: 1px solid var(--primary-color);
+  transition: 250ms;
+}
+
+.dark-theme .give-rating {
+  color: var(--white-color);
+  transition: 250ms;
+}
+
+.give-rating:hover {
+  color: var(--white-color);
+  background: var(--primary-color);
+  transition: 250ms;
+}
+
+@media screen and (min-width: 768px) {
+  .see-modal {
+    width: 685px;
+    padding: 32px;
+    top: 50%;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.75);
+    transition: all 250ms linear;
+  }
+
+  .see-backdrop.active .see-modal {
+    visibility: visible;
+    pointer-events: all;
+    transform: translate(-50%, -50%) scale(1);
+    transition: all 250ms linear;
+  }
+
+  .close-modal-icon {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+  }
+
+  .upper-wrapper {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .video {
+    margin-top: 0;
+    margin-right: 32px;
+    width: 332px;
+    height: 300px;
+  }
+
+  iframe,
+  .thumb {
+    width: 100%;
+  }
+
+  .upper-block {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+  }
+
+  .recipe-name {
+    display: flex;
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+
+  .rating-time {
+    width: 185px;
+    margin-bottom: 32px;
+  }
+
+  .ingredients-block {
+    width: 285px;
+    overflow: hidden;
+    overflow-y: scroll;
+  }
+
+  .ingredients-block::-webkit-scrollbar,
+  .instructions::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .ingredients-block::-webkit-scrollbar-thumb,
+  .instructions::-webkit-scrollbar-thumb {
+    border: 2px solid var(--light-color);
+    border-radius: 12px;
+    background: rgba(5, 5, 5, 0.18);
+  }
+
+  .dark-theme .ingredients-block::-webkit-scrollbar-thumb,
+  .dark-theme .instructions::-webkit-scrollbar-thumb {
+    border: 1px solid var(--dark-color);
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  .ingredients-recipe {
+    margin-bottom: 16px;
+  }
+
+  .tags-list {
+    width: 621px;
+    overflow: hidden;
+    overflow-x: scroll;
+  }
+
+  .tag {
+    margin-top: 16px;
+  }
+
+  .instructions {
+    margin-top: 28px;
+    margin-bottom: 28px;
+    width: 621px;
+    height: 162px;
+    overflow: hidden;
+    overflow-y: scroll;
+  }
+
+  .block-btn {
+    justify-content: flex-start;
+  }
+
+  .give-rating {
+    margin-left: 32px;
+  }
+
+  .give-favor {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

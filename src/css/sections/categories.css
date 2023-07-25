@@ -1,0 +1,151 @@
+.categories {
+  padding-bottom: 40px;
+  background: var(--light-color);
+  transition: 250ms;
+}
+
+.dark-theme .categories {
+  background: var(--dark-color);
+  transition: 250ms;
+}
+
+.button-all-categories {
+  width: 176px;
+  height: 50px;
+  font-weight: 500;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 15px;
+  color: rgba(5, 5, 5, 0.5);
+  background-color: transparent;
+  border: 1px solid rgba(5, 5, 5, 0.2);
+  transition: 250ms;
+}
+
+.dark-theme .button-all-categories {
+  color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: 250ms;
+}
+
+.button-all-categories.active {
+  border: 1px solid var(--primary-color);
+  transition: 250ms;
+}
+
+.dark-theme .button-all-categories.active {
+  color: var(--white-color);
+  transition: 250ms;
+}
+
+.button-all-categories:hover,
+.button-all-categories.active:hover {
+  color: var(--light-color);
+  background-color: var(--primary-color);
+  transition: 250ms;
+}
+
+.categories-list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 326px;
+  height: 198px;
+  margin-top: 24px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.categories-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.categories-list::-webkit-scrollbar-thumb {
+  height: 116px;
+  border-radius: 12px;
+  background: rgba(5, 5, 5, 0.18);
+  transition: 250ms;
+}
+
+.dark-theme .categories-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  transition: 250ms;
+}
+
+.categories-list::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+  transition: 250ms;
+}
+
+/* ####### markur in filters.js ####### */
+
+.category-item {
+  width: 100%;
+  padding-bottom: 18px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: left;
+  cursor: pointer;
+  border: none;
+  color: rgba(5, 5, 5, 0.3);
+  background: transparent;
+  transition: 250ms;
+}
+
+.category-item.active {
+  color: var(--primary-color);
+  transition: 250ms;
+}
+
+.category-item:hover,
+.dark-theme .category-item:hover {
+  color: var(--primary-color);
+  transition: 250ms;
+}
+
+.dark-theme .category-item {
+  color: rgba(255, 255, 255, 0.3);
+  transition: 250ms;
+}
+
+@media screen and (min-width: 768px) {
+  .categories {
+    height: 522px;
+    margin-right: 32px;
+    padding-top: 26px;
+  }
+
+  .categories-list {
+    margin-top: 30px;
+    width: 176px;
+    height: 416px;
+    padding-bottom: 64px;
+  }
+
+  .categories-list::-webkit-scrollbar-thumb {
+    height: 50px;
+  }
+
+  .category-item {
+    padding-bottom: 24px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .categories {
+    margin-right: 64px;
+    padding-bottom: 0;
+  }
+
+  .categories-list {
+    width: 235px;
+  }
+
+  .button-all-categories {
+    width: 174px;
+  }
+}

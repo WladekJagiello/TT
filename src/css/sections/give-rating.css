@@ -1,0 +1,251 @@
+.give-backdrop {
+  opacity: 0;
+  transition: 250ms ease-in-out;
+}
+
+.give-backdrop.active {
+  position: fixed;
+  opacity: 1;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(5, 5, 5, 0.4);
+  transition: 250ms ease-in-out;
+}
+
+.dark-theme .give-backdrop.active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.give-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 336px;
+  height: 348px;
+  padding: 20px;
+  background-color: var(--white-color);
+  border-radius: 15px;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.75);
+  transition: 250ms linear;
+}
+
+.give-backdrop.active .give-modal {
+  visibility: visible;
+  pointer-events: all;
+  transform: translate(-50%, -50%) scale(1);
+  transition: 250ms linear;
+}
+
+.dark-theme .give-modal {
+  background-color: var(--black-color);
+}
+
+.close-give {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  background-color: inherit;
+  border: none;
+  transition: 250ms ease-in-out;
+}
+
+.close-give-icon {
+  stroke: var(--black-color);
+  transition: 250ms;
+}
+
+.dark-theme .close-give-icon {
+  stroke: var(--white-color);
+  transition: 250ms;
+}
+
+.close-give-icon:hover {
+  stroke: var(--primary-color);
+  transform: scale(1.5) rotate(90deg);
+  transition: 250ms;
+}
+
+.give-title {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.dark-theme .give-title,
+.dark-theme .give-span {
+  color: var(--white-color);
+}
+
+.give-form {
+  display: flex;
+  flex-direction: column;
+  height: 286px;
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+
+.rating-container {
+  display: flex;
+  align-items: center;
+}
+
+.give-rating-span {
+  width: 10px;
+  margin-right: 6px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.dark-theme .give-rating-span {
+  color: var(--white-color);
+}
+
+.star-set {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 128px;
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.rating {
+  width: 1px;
+  height: 1px;
+  margin-top: 20px;
+  margin-left: 5px;
+}
+
+.rating-label {
+  width: 24px;
+  height: 24px;
+}
+
+.rating-label::before {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  content: url(../../images/Star_3.svg);
+}
+
+.rating-label.color::before {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  padding-left: 1px;
+  content: url(../../images/Star_2.svg);
+}
+
+.give-desc {
+  margin-top: 24px;
+}
+
+.desc-text {
+  font-size: 14px;
+  line-height: 18px;
+  color: rgba(5, 5, 5, 0.5);
+}
+
+.dark-theme .desc-text {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.give-email {
+  display: flex;
+  width: 295px;
+  height: 46px;
+  padding-left: 18px;
+  margin-top: auto;
+  background: transparent;
+  border: 1px solid rgba(5, 5, 5, 0.2);
+  border-radius: 15px;
+  transition: 250ms;
+}
+
+.dark-theme .give-email {
+  color: var(--white-color);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.give-email:hover {
+  border: 1px solid var(--primary-color);
+  transition: 250ms;
+}
+
+.give-email::placeholder {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  color: rgba(5, 5, 5, 0.5);
+}
+
+.give-email:valid {
+  background: transparent;
+  border: 1px solid rgba(155, 181, 55, 0.3);
+}
+
+.give-email:focus {
+  outline: 0;
+  border: 1px solid var(--primary-color);
+}
+
+.give-submit {
+  width: 295px;
+  height: 46px;
+  margin-top: 14px;
+  color: var(--white-color);
+  cursor: pointer;
+  background: var(--primary-color);
+  border: none;
+  border-radius: 15px;
+}
+
+.give-submit:hover {
+  color: var(--black-color);
+}
+
+@media screen and (min-width: 768px) {
+  .give-modal {
+    width: 424px;
+    height: 364px;
+    padding: 32px;
+  }
+
+  .give-form {
+    height: 278px;
+  }
+
+  .give-email {
+    width: 360px;
+    height: 48px;
+  }
+
+  .give-submit {
+    width: 360px;
+    height: 48px;
+    margin-top: 16px;
+  }
+
+  .desc-text {
+    font-size: 14px;
+    line-height: 18px;
+    color: rgba(5, 5, 5, 0.8);
+  }
+
+  .give-email::placeholder {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}

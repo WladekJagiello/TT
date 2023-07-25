@@ -3,3 +3,10 @@
 @import url('./sections/header.css');
 @import url('./sections/order-now.css');
 @import url('./sections/hero.css');
+@import url('./sections/categories.css');
+@import url('./sections/popular-recipes.css');
+@import url('./sections/filters.css');
+@import url('./sections/gallery.css');
+@import url('./sections/see-recipe.css');
+@import url('./sections/give-rating.css');
+@import url('./sections/pagination.css');
