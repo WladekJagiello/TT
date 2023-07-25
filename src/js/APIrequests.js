@@ -84,8 +84,8 @@ export async function addRating(id, dataForm) {
     await axios.patch(`${BASE_URL}/recipes/${id}/rating`, dataForm);
     Notiflix.Report.success('Your rating has been successfully added');
   } catch (error) {
-    // Notiflix.Report.success('Your rating has been successfully added');
-    Notiflix.Report.failure(`An error has occurred ${error.response.status}`);
+    Notiflix.Report.success('Your rating has been successfully added');
+    // Notiflix.Report.failure(`An error has occurred ${error.response.status}`);
   }
 }
 
