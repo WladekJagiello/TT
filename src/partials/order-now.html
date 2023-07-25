@@ -1,0 +1,57 @@
+<div class="order-backdrop">
+  <div class="order-modal">
+    <button class="order-close" type="button">
+      <svg class="close-modal-icon" width="20" height="20">
+        <use href="./images/sprite.svg#x-black"></use>
+      </svg>
+    </button>
+
+    <b class="order-title">Order now</b>
+
+    <form class="order-form" method="POST">
+      <label class="order-label">
+        <span class="order-span">Name</span>
+        <input
+          class="order-input"
+          type="text"
+          id="name"
+          placeholder="Name"
+          required
+        />
+      </label>
+
+      <label class="order-label">
+        <span class="order-span">Phone number</span>
+        <input
+          class="order-input"
+          type="tel"
+          id="phone"
+          placeholder="+380000000000"
+          required
+        />
+      </label>
+
+      <label class="order-label">
+        <span class="order-span">Email</span>
+        <input
+          class="order-input"
+          type="email"
+          id="email"
+          placeholder="Email"
+          required
+        />
+      </label>
+
+      <label class="order-label">
+        <span class="order-span">Comment</span>
+        <textarea
+          class="order-textarea"
+          id="comment"
+          placeholder="Comment"
+        ></textarea>
+      </label>
+
+      <button class="order-send" type="submit">Send</button>
+    </form>
+  </div>
+</div>
