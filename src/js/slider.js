@@ -30,10 +30,10 @@ const slide = events
                 </div>
               </div>
             </div>
-          </div>`;
+          </div>
+        </div>`;
   })
   .join('');
-
 swiperEl.innerHTML += slide;
 
 const swiper = new Swiper('.swiper', {
