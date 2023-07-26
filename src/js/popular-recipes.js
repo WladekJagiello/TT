@@ -5,7 +5,6 @@ import { fetchPopularRecipes } from './APIrequests';
 async function createPopularList() {
   const containerEls = document.querySelectorAll('.recipes-list');
   const results = await fetchPopularRecipes();
-
   const cardEl = results
     .flatMap(result => {
       const { _id, title, preview, description } = result;
@@ -22,7 +21,6 @@ async function createPopularList() {
     `;
     })
     .join('');
-
   containerEls.forEach(containerEl => {
     containerEl.insertAdjacentHTML('beforeend', cardEl);
   });

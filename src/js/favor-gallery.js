@@ -4,7 +4,6 @@ import Pagination from 'tui-pagination';
 import { createDataCard } from './see-recipe';
 import { fetchRecipeData } from './APIrequests';
 
-const heroEl = document.querySelector('.favorites-hero-mobile');
 const galleryEl = document.querySelector('.favorites-list');
 const zeroEl = document.querySelector('.favorites-zero');
 const tagsEl = document.querySelector('.tags-list');
@@ -18,7 +17,6 @@ let tagsSet = [];
 async function createGallery() {
   const startIndex = (pagination.getCurrentPage() - 1) * itemsPerPage;
   const dataForPage = dataStor.slice(startIndex, startIndex + itemsPerPage);
-
   const recipePromises = dataForPage.map(async id => {
     const response = await fetchRecipeData(id);
     return response;
@@ -35,7 +33,6 @@ async function createGallery() {
       }
     });
   });
-
   tagsSet = new Set();
   recipes.forEach(({ tags }) => {
     tags.forEach(tag => {
@@ -44,7 +41,6 @@ async function createGallery() {
       }
     });
   });
-
   const tagEl = Array.from(tagsSet)
     .map(tag => {
       return `<li class="tags-item">
@@ -54,7 +50,6 @@ async function createGallery() {
             </li>`;
     })
     .join('');
-
   tagsEl.innerHTML = tagEl;
 
   createCards(recipes);
@@ -104,7 +99,6 @@ function createCards(recipes) {
           }
         })
         .join('');
-
       return `
           <li class="card-recipe" id="${_id}" style="background-image: linear-gradient(rgba(5, 5, 5, 0.3), rgba(5, 5, 5, 0.3)), url(${preview})">
             <svg class="heart-icon remuve" id="${_id}" width="22" height="22">
@@ -125,8 +119,26 @@ function createCards(recipes) {
         `;
     })
     .join('');
-
   galleryEl.insertAdjacentHTML('beforeend', cardEl);
+
+  const buttonEls = document.querySelectorAll('.see-recipe');
+  buttonEls.forEach(function (buttonEl) {
+    buttonEl.addEventListener('click', function () {
+      handleClick(buttonEl);
+    });
+  });
+
+  let isButtonClicked = false;
+  function handleClick(buttonEl) {
+    if (!isButtonClicked) {
+      isButtonClicked = true;
+      const id = buttonEl.getAttribute('id');
+      createDataCard(id);
+      setTimeout(function () {
+        isButtonClicked = false;
+      }, 1000);
+    }
+  }
 
   const backdropEl = document.querySelector('.see-backdrop');
   const deletEls = document.querySelectorAll('.remuve');
@@ -162,6 +174,7 @@ function createCards(recipes) {
     });
   });
 
+  const heroEl = document.querySelector('.favorites-hero-mobile');
   if (galleryEl.innerHTML === '') {
     heroEl.classList.remove('active');
     zeroEl.classList.remove('active');
@@ -178,14 +191,6 @@ function createCards(recipes) {
   ) {
     waginaEl.style.opacity = '0';
   }
-
-  const buttonEls = document.querySelectorAll('.see-recipe');
-  buttonEls.forEach(function (buttonEl) {
-    buttonEl.addEventListener('click', function () {
-      const id = buttonEl.getAttribute('id');
-      createDataCard(id);
-    });
-  });
 
   const tagBtnEls = document.querySelectorAll('.favorites-tags');
   tagBtnEls.forEach(function (tagBtnEl) {

@@ -4,12 +4,11 @@ import { fetchEvents } from './APIrequests';
 
 // ####### markup slider #######
 
-async function createSlider() {
-  const swiperEl = document.querySelector('.swiper-wrapper');
-  const events = await fetchEvents();
-  const slide = events
-    .map((event, index) => {
-      return `<div class="swiper-slide">
+const swiperEl = document.querySelector('.swiper-wrapper');
+const events = await fetchEvents();
+const slide = events
+  .map((event, index) => {
+    return `<div class="swiper-slide">
           <div class="my-slide">
             <div class="card-cook">
               <div class="wrapper-cook">
@@ -32,21 +31,18 @@ async function createSlider() {
               </div>
             </div>
           </div>`;
-    })
-    .join('');
+  })
+  .join('');
 
-  swiperEl.innerHTML += slide;
+swiperEl.innerHTML += slide;
 
-  const swiper = new Swiper('.swiper', {
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
+const swiper = new Swiper('.swiper', {
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
 
-    autoplay: {
-      delay: 2500,
-    },
-  });
-}
-
-createSlider();
+  autoplay: {
+    delay: 2500,
+  },
+});

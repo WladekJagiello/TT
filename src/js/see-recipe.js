@@ -49,7 +49,6 @@ export async function createDataCard(id) {
                         alt="${description}">
                       </iframe>`;
     }
-
     titleEl.textContent = title;
 
     ratingTimeEl.innerHTML = `<span class="rating-span">${rating}</span>`;
@@ -87,11 +86,9 @@ export async function createDataCard(id) {
         }
       })
       .join('');
-
     ratingTimeEl.insertAdjacentHTML('beforeend', stars);
 
     const timeRecipe = `<span class="time-span">${time} min</span>`;
-
     ratingTimeEl.insertAdjacentHTML('beforeend', timeRecipe);
 
     const ingredientsRecipe = ingredients
@@ -103,7 +100,6 @@ export async function createDataCard(id) {
                       </div>`;
       })
       .join('');
-
     ingredientsEl.innerHTML += ingredientsRecipe;
 
     const tagsRecipe = tags
@@ -112,16 +108,18 @@ export async function createDataCard(id) {
       })
       .join('');
     const tagsList = `<div class-"tags-list">${tagsRecipe}</div>`;
-
     lowerBlockEl.innerHTML += tagsList;
 
     const instructionsRecipe = `<p class="instructions">${instructions}</p>`;
-
     lowerBlockEl.innerHTML += instructionsRecipe;
 
     giveBtnEl.setAttribute('data', `${description}`);
     giveBtnEl.setAttribute('id', `${id}`);
     addBtnEl.setAttribute('id', `${id}`);
+
+    if (document.body.id === 'favorites') {
+      addBtnEl.textContent = 'Remuve';
+    }
 
     isRequestSent = false;
   }
@@ -147,13 +145,8 @@ export async function createDataCard(id) {
     document.body.style.overflow = '';
   });
 
-  if (document.body.id === 'favorites') {
-    addBtnEl.textContent = 'Remuve';
-  }
-
   function toggleModal() {
     backdropEl.classList.toggle('active');
-
     if (backdropEl.classList.contains('active')) {
       document.body.style.overflow = 'hidden';
     } else {

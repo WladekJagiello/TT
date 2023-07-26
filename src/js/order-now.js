@@ -27,7 +27,9 @@ formEl.addEventListener('submit', event => {
     comment: `${comment}`,
   };
 
-  orderNow(dataForm);
+  console.log(dataForm);
+
+  // orderNow(dataForm);
 
   toggleModal();
 

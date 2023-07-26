@@ -6,16 +6,13 @@ async function createCategoriesList() {
   const containerEl = document.querySelector('.categories-list');
   const response = await fetchCategories();
   response.sort();
-
   const buttonEl = response
     .map(({ name }) => {
       return `<button class="category-item" type="button">${name}</button>`;
     })
     .join('');
-
   containerEl.insertAdjacentHTML('beforeend', buttonEl);
 }
-// containerEl.innerHTML += buttonEl;
 
 // ####### markup time-list #######
 
@@ -32,15 +29,12 @@ async function createTimeList() {
     containerEl.insertAdjacentHTML('beforeend', buttonEl);
   }
 
-  function toggleActive() {
+  inputEl.addEventListener('click', () => {
     containerEl.classList.toggle('active');
     iconEl.classList.toggle('active');
-  }
-
-  inputEl.addEventListener('click', toggleActive);
+  });
 
   const itemEls = document.querySelectorAll('.time-item');
-
   itemEls.forEach(function (item) {
     item.addEventListener('click', function () {
       placeholderEl.textContent = item.textContent;
@@ -58,7 +52,6 @@ async function createAreasList() {
   const containerEl = document.querySelector('.area-list');
   const areas = await fetchAreas();
   areas.sort();
-
   const buttonEl = areas
     .map(
       area => `<li>
@@ -68,15 +61,12 @@ async function createAreasList() {
     .join('');
   containerEl.insertAdjacentHTML('beforeend', buttonEl);
 
-  function toggleActive() {
+  inputEl.addEventListener('click', () => {
     containerEl.classList.toggle('active');
     iconEl.classList.toggle('active');
-  }
-
-  inputEl.addEventListener('click', toggleActive);
+  });
 
   const itemEls = document.querySelectorAll('.area-item');
-
   itemEls.forEach(function (item) {
     item.addEventListener('click', function () {
       placeholderEl.textContent = item.textContent;
@@ -93,11 +83,9 @@ async function createIngredientsList() {
   const inputEl = document.querySelector('.ingredient-input');
   const containerEl = document.querySelector('.ingredient-list');
   const response = await fetchIngredients();
-
   const ingredients = response
     .slice()
     .sort((a, b) => a.name.localeCompare(b.name));
-
   const buttonEls = ingredients
     .map(({ _id, name }) => {
       return `<li>
@@ -105,17 +93,14 @@ async function createIngredientsList() {
             </li>`;
     })
     .join('');
-
   containerEl.insertAdjacentHTML('beforeend', buttonEls);
 
-  function toggleActive() {
+  inputEl.addEventListener('click', () => {
     containerEl.classList.toggle('active');
     iconEl.classList.toggle('active');
-  }
-  inputEl.addEventListener('click', toggleActive);
+  });
 
   const itemEls = document.querySelectorAll('.ingredient-item');
-
   itemEls.forEach(function (item) {
     item.addEventListener('click', function () {
       placeholderEl.textContent = item.textContent;
