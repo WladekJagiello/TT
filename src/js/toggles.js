@@ -12,25 +12,25 @@
 
 // ####### toggle active page #######
 
-window.addEventListener('DOMContentLoaded', function () {
-  const homeEls = document.querySelectorAll('.home-link');
-  const favEls = document.querySelectorAll('.fav-link');
+const homeEls = document.querySelectorAll('.home-link');
+const favEls = document.querySelectorAll('.fav-link');
 
-  homeEls.forEach(function (homeEl) {
-    if (location.pathname.includes('index')) {
-      homeEl.classList.add('active');
-    } else {
-      homeEl.classList.remove('active');
-    }
-  });
+homeEls.forEach(function (homeEl) {
+  homeEl.classList.add('active');
 
-  favEls.forEach(function (favEl) {
-    if (location.pathname.includes('favorites')) {
-      favEl.classList.add('active');
-    } else {
-      favEl.classList.remove('active');
-    }
-  });
+  if (document.body.id === 'home') {
+    homeEl.classList.add('active');
+  } else {
+    homeEl.classList.remove('active');
+  }
+});
+
+favEls.forEach(function (favEl) {
+  if (document.body.id === 'favorites') {
+    favEl.classList.add('active');
+  } else {
+    favEl.classList.remove('active');
+  }
 });
 
 // ####### toggle theme #######
