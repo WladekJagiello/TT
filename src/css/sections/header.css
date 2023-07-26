@@ -193,12 +193,14 @@
   transition: 250ms;
 }
 
-.nav-link.active {
+.home-link.active,
+.fav-link.active {
   color: var(--white-color);
   transition: 250ms;
 }
 
-.dark-theme .nav-link.active {
+.dark-theme .home-link.active,
+.dark-theme .fav-link.active {
   color: var(--primary-color);
   transition: 250ms;
 }
@@ -307,7 +309,8 @@ input:checked + .slider:before {
     color: var(--white-color);
   }
 
-  .nav-link.active,
+  .home-link.active,
+  .fav-link.active,
   .dark-theme .nav-link.active {
     color: var(--primary-color);
   }

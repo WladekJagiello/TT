@@ -13,13 +13,22 @@
 // ####### toggle active page #######
 
 window.addEventListener('DOMContentLoaded', function () {
-  const linkEls = document.querySelectorAll('.nav-link');
+  const homeEls = document.querySelectorAll('.home-link');
+  const favEls = document.querySelectorAll('.fav-link');
 
-  linkEls.forEach(function (linkEl) {
-    if (linkEl.href.includes(location.pathname)) {
-      linkEl.classList.add('active');
+  homeEls.forEach(function (homeEl) {
+    if (location.pathname.includes('index')) {
+      homeEl.classList.add('active');
     } else {
-      linkEl.classList.remove('active');
+      homeEl.classList.remove('active');
+    }
+  });
+
+  favEls.forEach(function (favEl) {
+    if (location.pathname.includes('favorites')) {
+      favEl.classList.add('active');
+    } else {
+      favEl.classList.remove('active');
     }
   });
 });
