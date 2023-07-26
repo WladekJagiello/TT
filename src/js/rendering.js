@@ -17,9 +17,11 @@ const searchEl = document.querySelector('.search-icon');
 const resetEl = document.querySelector('.reset-btn');
 const timeEl = document.querySelector('.time-list');
 const areaEl = document.querySelector('.area-list');
+let optionCategopy = false;
 
 allCategoryEl.addEventListener('click', function () {
-  deactivateCategory();
+  deactivateAllCategory();
+  optionCategopy = false;
   allCategoryEl.classList.add('active');
   timeValueEl.textContent = '0 min';
   timeValueEl.classList.remove('active');
@@ -33,15 +35,9 @@ allCategoryEl.addEventListener('click', function () {
   renderGallery();
 });
 
-function deactivateCategory() {
-  const categoryEls = document.querySelectorAll('.category-item');
-  categoryEls.forEach(categoryEl => {
-    categoryEl.classList.remove('active');
-  });
-}
-
 categoryEl.addEventListener('click', function (event) {
-  deactivateCategory();
+  deactivateAllCategory();
+  optionCategopy = true;
   event.target.classList.add('active');
   allCategoryEl.classList.remove('active');
   const category = event.target.textContent;
@@ -60,6 +56,7 @@ searchInEl.addEventListener(
       filter.setTitle(title);
       renderGallery();
     } else {
+      activeAllCategory();
       searchEl.classList.remove('active');
       resetEl.style.display = 'none';
       renderGallery();
@@ -68,6 +65,7 @@ searchInEl.addEventListener(
 );
 
 resetEl.addEventListener('click', function () {
+  activeAllCategory();
   searchInEl.value = '';
   resetEl.style.display = 'none';
   searchEl.classList.remove('active');
@@ -119,6 +117,37 @@ const pagination = new Pagination('pagination', {
   },
 });
 
+pagination.on('afterMove', async event => {
+  galleryEl.innerHTML = '';
+  const page = event.page;
+  filter.setPage(page);
+  const response = await filter.fetchRecipes();
+  const unique = new Set();
+  response.results.forEach(result => {
+    unique.add(result);
+  });
+  const uniqueResults = Array.from(unique);
+  createGallery(uniqueResults);
+});
+
+function activeAllCategory() {
+  if (
+    timeValueEl.textContent === '0 min' &&
+    areaValueEl.textContent === 'Region' &&
+    ingredientValueEl.textContent === 'Product' &&
+    optionCategopy === false
+  ) {
+    allCategoryEl.classList.add('active');
+  }
+}
+
+function deactivateAllCategory() {
+  const categoryEls = document.querySelectorAll('.category-item');
+  categoryEls.forEach(categoryEl => {
+    categoryEl.classList.remove('active');
+  });
+}
+
 function paginationHide(totalItems) {
   const paginaEl = document.querySelector('.pagination-wrapper');
   const footerEl = document.querySelector('.footer');
@@ -135,19 +164,6 @@ function paginationHide(totalItems) {
     footerEl.classList.remove('active');
   }
 }
-
-pagination.on('afterMove', async event => {
-  galleryEl.innerHTML = '';
-  const page = event.page;
-  filter.setPage(page);
-  const response = await filter.fetchRecipes();
-  const unique = new Set();
-  response.results.forEach(result => {
-    unique.add(result);
-  });
-  const uniqueResults = Array.from(unique);
-  createGallery(uniqueResults);
-});
 
 async function renderGallery() {
   galleryEl.innerHTML = '';
