@@ -11,16 +11,14 @@ const openEl = document.querySelector('.give-rating');
 const descEl = document.querySelector('.give-desc');
 const formEl = document.querySelector('.give-form');
 
-openEl.addEventListener('click', openHandleClick);
-function openHandleClick() {
+openEl.addEventListener('click', () => {
   const desc = openEl.getAttribute('data');
   const id = openEl.getAttribute('id');
   seeBackdropEl.classList.remove('active');
   toggleModal();
   changeRating(id);
   descEl.innerHTML = `<p class="desc-text">${desc}</p>`;
-  openEl.removeEventListener('click', openHandleClick);
-}
+});
 
 modalEl.addEventListener('click', function (event) {
   event.stopPropagation();
@@ -98,13 +96,12 @@ async function changeRating(id) {
   formEl.addEventListener('submit', event => {
     event.preventDefault();
     const { elements } = event.currentTarget;
-    const email = elements.email.value.trim();
 
     console.log(email);
 
     const dataForm = {
       [`"rate"`]: Number(elements.rate.value),
-      [`"email"`]: email,
+      [`"email"`]: `${elements.email.value.trim()}`,
     };
 
     console.log(dataForm);

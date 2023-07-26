@@ -62,26 +62,21 @@ export async function createGallery(results) {
   galleryEl.insertAdjacentHTML('beforeend', cardEl);
 
   const buttonEls = document.querySelectorAll('.see-recipe');
+  let isButtonClicked = false;
   buttonEls.forEach(function (buttonEl) {
     buttonEl.addEventListener('click', function () {
-      handleClick(buttonEl);
+      if (!isButtonClicked) {
+        isButtonClicked = true;
+        const id = buttonEl.getAttribute('id');
+        createDataCard(id);
+        setTimeout(function () {
+          isButtonClicked = false;
+        }, 0);
+      }
     });
   });
 
-  let isButtonClicked = false;
-  function handleClick(buttonEl) {
-    if (!isButtonClicked) {
-      isButtonClicked = true;
-      const id = buttonEl.getAttribute('id');
-      createDataCard(id);
-      setTimeout(function () {
-        isButtonClicked = false;
-      }, 1000);
-    }
-  }
-
   let dataStor = JSON.parse(localStorage.getItem('element_data')) || [];
-
   const heartBtnEls = document.querySelectorAll('.heart-icon');
   heartBtnEls.forEach(function (heartBtnEl) {
     const id = heartBtnEl.getAttribute('id');
@@ -96,7 +91,6 @@ export async function createGallery(results) {
   addBtnEls.forEach(function (addBtnEl) {
     addBtnEl.addEventListener('click', function () {
       const id = addBtnEl.getAttribute('id');
-
       if (!dataStor.includes(id)) {
         addBtnEl.style.fill = 'rgba(255, 255, 255, 1)';
         if (id !== null) dataStor.push(id);

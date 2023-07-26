@@ -17,8 +17,8 @@ const searchEl = document.querySelector('.search-icon');
 const resetEl = document.querySelector('.reset-btn');
 const timeEl = document.querySelector('.time-list');
 const areaEl = document.querySelector('.area-list');
-let optionCategopy;
 
+let optionCategopy;
 allCategoryEl.addEventListener('click', function () {
   deactivateAllCategory();
   optionCategopy = false;
@@ -178,5 +178,4 @@ async function renderGallery() {
   paginationHide(totalItems);
   pagination.reset(totalItems);
 }
-
 renderGallery();

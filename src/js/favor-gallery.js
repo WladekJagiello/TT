@@ -122,23 +122,19 @@ function createCards(recipes) {
   galleryEl.insertAdjacentHTML('beforeend', cardEl);
 
   const buttonEls = document.querySelectorAll('.see-recipe');
+  let isButtonClicked = false;
   buttonEls.forEach(function (buttonEl) {
     buttonEl.addEventListener('click', function () {
-      handleClick(buttonEl);
+      if (!isButtonClicked) {
+        isButtonClicked = true;
+        const id = buttonEl.getAttribute('id');
+        createDataCard(id);
+        setTimeout(function () {
+          isButtonClicked = false;
+        }, 0);
+      }
     });
   });
-
-  let isButtonClicked = false;
-  function handleClick(buttonEl) {
-    if (!isButtonClicked) {
-      isButtonClicked = true;
-      const id = buttonEl.getAttribute('id');
-      createDataCard(id);
-      setTimeout(function () {
-        isButtonClicked = false;
-      }, 1000);
-    }
-  }
 
   const backdropEl = document.querySelector('.see-backdrop');
   const deletEls = document.querySelectorAll('.remuve');

@@ -12,16 +12,12 @@ export async function createDataCard(id) {
   const modalEl = document.querySelector('.see-modal');
   const closeEl = document.querySelector('.see-close');
   const videoEl = document.querySelector('.video');
-
   let isRequestSent = false;
-
   if (!isRequestSent) {
     isRequestSent = true;
     const response = await fetchRecipeData(id);
-
     toggleModal();
     resetData();
-
     const {
       youtube,
       thumb,
@@ -33,7 +29,6 @@ export async function createDataCard(id) {
       tags,
       instructions,
     } = response;
-
     if (
       !youtube ||
       youtube === '' ||
@@ -61,9 +56,7 @@ export async function createDataCard(id) {
           rating - activeStars !== 0
             ? rating - activeStars + 0.3
             : rating - activeStars;
-
         const sizeStar = window.innerWidth < 768 ? 15 : 16;
-
         if (i < activeStars) {
           return `<svg class="star-icon-active star see"
                           width="${sizeStar}" height="${sizeStar}">
@@ -87,7 +80,6 @@ export async function createDataCard(id) {
       })
       .join('');
     ratingTimeEl.insertAdjacentHTML('beforeend', stars);
-
     const timeRecipe = `<span class="time-span">${time} min</span>`;
     ratingTimeEl.insertAdjacentHTML('beforeend', timeRecipe);
 
@@ -116,7 +108,6 @@ export async function createDataCard(id) {
     giveBtnEl.setAttribute('data', `${description}`);
     giveBtnEl.setAttribute('id', `${id}`);
     addBtnEl.setAttribute('id', `${id}`);
-
     if (document.body.id === 'favorites') {
       addBtnEl.textContent = 'Remuve';
     }

@@ -25,5 +25,4 @@ async function createPopularList() {
     containerEl.insertAdjacentHTML('beforeend', cardEl);
   });
 }
-
 createPopularList();
