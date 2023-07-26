@@ -12,28 +12,26 @@ openEls.forEach(openEl => {
   });
 });
 
+let submitting = false;
 formEl.addEventListener('submit', event => {
   event.preventDefault();
+  if (!submitting) {
+    submitting = true;
+    const { elements } = event.currentTarget;
+    const dataForm = {
+      [`"name"`]: elements.name.value.trim(),
+      [`"phone"`]: elements.phone.value.trim(),
+      [`"email"`]: elements.email.value.trim(),
+      [`"comment"`]: elements.comment.value.trim(),
+    };
 
-  let name = document.getElementById('name').value;
-  let phone = document.getElementById('phone').value;
-  let email = document.getElementById('email').value;
-  let comment = document.getElementById('comment').value;
+    console.log(dataForm);
 
-  const dataForm = {
-    name: `${name}`,
-    phone: `${phone}`,
-    email: `${email}`,
-    comment: `${comment}`,
-  };
-
-  console.log(dataForm);
-
-  // orderNow(dataForm);
-
-  toggleModal();
-
-  event.currentTarget.reset();
+    orderNow(dataForm);
+    toggleModal();
+    event.currentTarget.reset();
+  }
+  submitting = false;
 });
 
 modalEl.addEventListener('click', function (event) {

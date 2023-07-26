@@ -93,22 +93,24 @@ async function changeRating(id) {
     }
   }
 
+  let submitting = false;
   formEl.addEventListener('submit', event => {
     event.preventDefault();
-    const { elements } = event.currentTarget;
+    if (!submitting) {
+      submitting = true;
+      const { elements } = event.currentTarget;
+      const dataForm = {
+        [`"rate"`]: Number(elements.rate.value),
+        [`"email"`]: elements.email.value.trim(),
+      };
 
-    console.log(email);
+      console.log(dataForm);
 
-    const dataForm = {
-      [`"rate"`]: Number(elements.rate.value),
-      [`"email"`]: `${elements.email.value.trim()}`,
-    };
-
-    console.log(dataForm);
-
-    // addRating(id, dataForm);
-    toggleModal();
-    descEl.innerHTML = '';
-    event.currentTarget.reset();
+      addRating(id, dataForm);
+      toggleModal();
+      descEl.innerHTML = '';
+      event.currentTarget.reset();
+    }
+    submitting = false;
   });
 }
