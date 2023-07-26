@@ -4,11 +4,12 @@ import { fetchEvents } from './APIrequests';
 
 // ####### markup slider #######
 
-const swiperEl = document.querySelector('.swiper-wrapper');
-const events = await fetchEvents();
-const slide = events
-  .map((event, index) => {
-    return `<div class="swiper-slide">
+async function getData() {
+  const swiperEl = document.querySelector('.swiper-wrapper');
+  const events = await fetchEvents();
+  const slide = events
+    .map((event, index) => {
+      return `<div class="swiper-slide">
           <div class="my-slide">
             <div class="card-cook">
               <div class="wrapper-cook">
@@ -32,9 +33,11 @@ const slide = events
             </div>
           </div>
         </div>`;
-  })
-  .join('');
-swiperEl.innerHTML += slide;
+    })
+    .join('');
+  swiperEl.innerHTML += slide;
+}
+getData();
 
 const swiper = new Swiper('.swiper', {
   pagination: {
