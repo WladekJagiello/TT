@@ -5,14 +5,13 @@ import { createDataCard } from './see-recipe';
 import { fetchRecipeData } from './APIrequests';
 
 const heroEl = document.querySelector('.favorites-hero-mobile');
-const removeEls = document.querySelectorAll('.remove-favor');
 const galleryEl = document.querySelector('.favorites-list');
 const zeroEl = document.querySelector('.favorites-zero');
 const tagsEl = document.querySelector('.tags-list');
 
 let dataStor = JSON.parse(localStorage.getItem('element_data')) || [];
+
 const itemsPerPage = window.innerWidth < 768 ? 9 : 12;
-const selector = '.favorites-list';
 let tagsData = {};
 let tagsSet = [];
 
@@ -76,6 +75,7 @@ async function updateGalleryByTag(selectedTag) {
 }
 
 function createCards(recipes) {
+  galleryEl.innerHTML = '';
   const cardEl = recipes
     .map(({ _id, title, rating, preview, description }) => {
       const starsEl = Array(5)
@@ -106,13 +106,13 @@ function createCards(recipes) {
         .join('');
 
       return `
-          <li class="card-recipe card-recipe-fav" style="background-image: linear-gradient(rgba(5, 5, 5, 0.3), rgba(5, 5, 5, 0.3)), url(${preview})">
-            <svg class="heart-icon favorites heart-icon-fav remove-favor" id="${_id}" name="remove" width="22" height="22">
+          <li class="card-recipe" id="${_id}" style="background-image: linear-gradient(rgba(5, 5, 5, 0.3), rgba(5, 5, 5, 0.3)), url(${preview})">
+            <svg class="heart-icon remuve" id="${_id}" width="22" height="22">
               <use href="${sprite}#heart"></use>
             </svg>
-            <h3 class="card-recipe-title card-title-fav">${title}</h3>
+            <h3 class="card-recipe-title">${title}</h3>
             <p class="card-recipe-description">${description}</p>
-            <div class="recipe-block recipe-block-fav">
+            <div class="recipe-block">
               <div class="rating-block">
                 <span class="rating-recipe">${rating}</span>
                 ${starsEl}
@@ -126,7 +126,41 @@ function createCards(recipes) {
     })
     .join('');
 
-  galleryEl.innerHTML = cardEl;
+  galleryEl.insertAdjacentHTML('beforeend', cardEl);
+
+  const backdropEl = document.querySelector('.see-backdrop');
+  const deletEls = document.querySelectorAll('.remuve');
+  deletEls.forEach(deletEl => {
+    deletEl.addEventListener('click', function () {
+      const id = deletEl.getAttribute('id');
+      const index = dataStor.indexOf(id);
+      Notiflix.Confirm.show(
+        'CHANGE YOUR MIND!',
+        'Remove recipe from collection?',
+        'Yes',
+        'No',
+        function okCb() {
+          if (index !== -1) {
+            dataStor.splice(index, 1);
+            localStorage.setItem('element_data', JSON.stringify(dataStor));
+            pagination.reset(dataStor.length);
+            backdropEl.classList.remove('active');
+            document.body.style.overflow = '';
+            createGallery();
+          }
+          Notiflix.Notify.success('Slava Ukraine!');
+        },
+        function cancelCb() {
+          Notiflix.Notify.success('Slava Ukraine!');
+          return;
+        },
+        {
+          width: '335px',
+          borderRadius: '15px',
+        }
+      );
+    });
+  });
 
   if (galleryEl.innerHTML === '') {
     heroEl.classList.remove('active');
@@ -135,16 +169,6 @@ function createCards(recipes) {
     heroEl.classList.add('active');
     zeroEl.classList.add('active');
   }
-
-  const heartBtnEls = document.querySelectorAll('.heart-icon');
-  heartBtnEls.forEach(function (heartBtnEl) {
-    const id = heartBtnEl.getAttribute('id');
-    if (!dataStor.includes(id)) {
-      heartBtnEl.style.fill = 'none';
-    } else {
-      heartBtnEl.style.fill = 'rgba(255, 255, 255, 1)';
-    }
-  });
 
   const waginaEl = document.querySelector('.pagination-wrapper');
   if (
@@ -160,43 +184,6 @@ function createCards(recipes) {
     buttonEl.addEventListener('click', function () {
       const id = buttonEl.getAttribute('id');
       createDataCard(id);
-    });
-  });
-
-  removeEls.forEach(function (removeEl) {
-    removeEl.textContent = 'Remove';
-    removeEl.classList.add('remove-favor');
-  });
-
-  const deletEls = document.getElementsByName('remove');
-  deletEls.forEach(deletEl => {
-    deletEl.addEventListener('click', function () {
-      const id = deletEl.getAttribute('id');
-      const index = dataStor.indexOf(id);
-      Notiflix.Confirm.show(
-        'CHANGE YOUR MIND!',
-        'Remove recipe from collection?',
-        'Yes',
-        'No',
-        function okCb() {
-          if (index !== -1) {
-            dataStor.splice(index, 1);
-            localStorage.setItem('element_data', JSON.stringify(dataStor));
-            pagination.reset(dataStor.length);
-            pagination.movePageTo(1);
-            createGallery();
-          }
-          Notiflix.Notify.success('Slava Ukraine!');
-        },
-        function cancelCb() {
-          Notiflix.Notify.success('Slava Ukraine!');
-          return;
-        },
-        {
-          width: '335px',
-          borderRadius: '15px',
-        }
-      );
     });
   });
 

@@ -7,7 +7,7 @@ export async function createDataCard(id) {
   const lowerBlockEl = document.querySelector('.lower-block');
   const backdropEl = document.querySelector('.see-backdrop');
   const giveBtnEl = document.querySelector('.give-rating');
-  const addBtnEll = document.querySelector('.to-favorite');
+  const addBtnEl = document.querySelector('.to-favorite');
   const titleEl = document.querySelector('.recipe-name');
   const modalEl = document.querySelector('.see-modal');
   const closeEl = document.querySelector('.see-close');
@@ -121,7 +121,7 @@ export async function createDataCard(id) {
 
     giveBtnEl.setAttribute('data', `${description}`);
     giveBtnEl.setAttribute('id', `${id}`);
-    addBtnEll.setAttribute('id', `${id}`);
+    addBtnEl.setAttribute('id', `${id}`);
 
     isRequestSent = false;
   }
@@ -146,6 +146,10 @@ export async function createDataCard(id) {
     backdropEl.classList.remove('active');
     document.body.style.overflow = '';
   });
+
+  if (document.body.id === 'favorites') {
+    addBtnEl.textContent = 'Remuve';
+  }
 
   function toggleModal() {
     backdropEl.classList.toggle('active');
