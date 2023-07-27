@@ -3,6 +3,7 @@ body {
   background: var(--light-color);
   transition: 250ms;
   overflow-x: hidden;
+  transition: 250ms;
 }
 
 body.dark-theme {
@@ -22,34 +23,46 @@ body.dark-theme {
   transition: 250ms;
 }
 
+.hero-container {
+  display: none;
+}
+
+.hero-container-mobile {
+  width: 335px;
+  margin: 0 auto;
+  height: 516px;
+  background: url('../../images/fav-hero-mob.jpg');
+  background-size: cover;
+  border-radius: 15px;
+}
+
 .favorites-hero {
   display: none;
 }
 
+.favorites-hero.active {
+  display: flex;
+  padding-top: 20px;
+  background: var(--light-color);
+  transition: 250ms;
+}
+
+.dark-theme .favorites-hero.active {
+  background: var(--dark-color);
+  transition: 250ms;
+}
+
 .favorites-zero {
-  margin-top: 256px;
+  display: none;
 }
 
 .favorites-zero.active {
-  display: none;
-}
-
-.favorites-hero-mobile {
-  display: none;
-  width: 100%;
-  height: 516px;
-  margin-top: 20px;
-  border-radius: 15px;
-  background: url('../../images/fav-hero-mob.jpg');
-  background-size: cover;
-}
-
-.favorites-hero-mobile.active {
   display: flex;
+  margin-top: 256px;
 }
 
 .favorites-icon {
-  display: block;
+  display: flex;
   width: 68px;
   height: 58px;
   margin-left: auto;
@@ -57,7 +70,7 @@ body.dark-theme {
 }
 
 .favorites-text {
-  display: block;
+  display: flex;
   text-align: center;
   width: 335px;
   margin-top: 24px;
@@ -70,32 +83,38 @@ body.dark-theme {
 }
 
 @media screen and (-webkit-max-device-pixel-ratio: 2) and (max-resolution: 192dpi) and (max-resolution: 2dppx) {
-  .favorites-hero.active {
+  .hero-container-mobile {
     background: url('../../images/fav-hero-mob@2x.jpg');
     background-size: cover;
   }
 }
 
 @media screen and (min-width: 768px) {
+  .favorites-hero,
+  .favorites-hero.active {
+    display: block;
+    padding-top: 15px;
+  }
+
   .container {
     width: 704px;
   }
 
-  .favorites-hero-mobile.active {
+  .hero-container-mobile {
     display: none;
   }
 
-  .favorites-hero {
+  .hero-container {
     display: block;
     width: 704px;
     height: 356px;
-    margin-top: 15px;
+    margin: 0 auto;
     background: url('../../images/fav-hero-tab.jpg');
     background-size: cover;
-    border-radius: 17px;
+    border-radius: 15px;
   }
 
-  .favorites-zero {
+  .favorites-zero.active {
     margin-top: 64px;
   }
 
@@ -115,57 +134,32 @@ body.dark-theme {
 }
 
 @media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) and (min-resolution: 2dppx) {
-  .favorites-hero {
+  .hero-container {
     background: url('../../images/fav-hero-tab@2.jpg');
     background-size: cover;
   }
 }
 
 @media screen and (min-width: 1200px) {
-  body {
-    overflow-x: hidden;
-  }
-
-  body::-webkit-scrollbar {
-    width: 12px;
-  }
-
-  body::-webkit-scrollbar-thumb {
-    border-radius: 12px;
-    border: 2px solid var(--light-color);
-    background: rgba(5, 5, 5, 0.18);
-    transition: 250ms;
-  }
-
-  body.dark-theme::-webkit-scrollbar-thumb {
-    border: 2px solid var(--dark-color);
-    background: rgba(255, 255, 255, 0.2);
-    transition: 250ms;
-  }
-
-  body::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-color);
-    transition: 250ms;
+  .favorites-hero,
+  .favorites-hero.active {
+    padding-top: 0;
   }
 
   .container {
     width: 1080px;
   }
 
-  .favorites-hero {
+  .hero-container {
     width: 1080px;
     height: 356px;
-    margin: 0;
     background: url('../../images/fav-hero-desk.jpg');
     background-size: cover;
   }
 }
 
 @media screen and (min-width: 1200px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) and (min-resolution: 2dppx) {
-  .favorites-hero {
-    width: 1080px;
-    height: 356px;
-    margin: 0;
+  .hero-container {
     background: url('../../images/fav-hero-desk@2x.jpg');
     background-size: cover;
   }

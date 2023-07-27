@@ -11,8 +11,47 @@
   <body id="favorites">
     <load ="partials/header.html" />
 
-    <section>
-      <load ="partials/favor-gallery.html" />
+    <section class="favorites-hero">
+      <div class="hero-container"></div>
+      <div class="hero-container-mobile"></div>
+    </section>
+
+    <section class="favorites-zero">
+      <div class="container">
+        <svg class="favorites-icon">
+          <use href="./images/sprite.svg#fav-icon"></use>
+        </svg>
+
+        <p class="favorites-text">
+          It appears that you haven't added any recipes to your favorites yet.
+          To get started, you can add recipes that you like to your favorites
+          for easier access in the future.
+        </p>
+      </div>
+    </section>
+
+    <section class="tags">
+      <div class="container tags-container">
+        <ul class="favor-tags-list">
+          <li class="tags-item">
+            <button class="favorites-tags all-tags" type="button">
+              All categories
+            </button>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="favorites-gallery">
+      <div class="container favorites-gallery-container">
+        <ul class="favorites-list"></ul>
+      </div>
+
+      <div class="container">
+        <div class="pagination-wrapper">
+          <div class="tui-pagination" id="pagination"></div>
+        </div>
+      </div>
     </section>
 
     <!-- ####### modals ####### -->

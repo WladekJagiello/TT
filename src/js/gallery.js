@@ -17,9 +17,7 @@ export async function createGallery(results) {
             rating - activeStars !== 0
               ? rating - activeStars + 0.4
               : rating - activeStars;
-
           const sizeStar = window.innerWidth < 768 ? 16 : 13;
-
           if (i < activeStars) {
             return `<svg class="star-icon-active star" width="${sizeStar}" height="${sizeStar}">
                     <use href="${sprite}#star"
@@ -71,7 +69,7 @@ export async function createGallery(results) {
         createDataCard(id);
         setTimeout(function () {
           isButtonClicked = false;
-        }, 0);
+        }, 250);
       }
     });
   });

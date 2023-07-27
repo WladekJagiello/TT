@@ -5,11 +5,8 @@ import { createDataCard } from './see-recipe';
 import { fetchRecipeData } from './APIrequests';
 
 const galleryEl = document.querySelector('.favorites-list');
-const zeroEl = document.querySelector('.favorites-zero');
-const tagsEl = document.querySelector('.tags-list');
-
-let dataStor = JSON.parse(localStorage.getItem('element_data')) || [];
-
+const tagsEl = document.querySelector('.favor-tags-list');
+const dataStor = JSON.parse(localStorage.getItem('element_data')) || [];
 const itemsPerPage = window.innerWidth < 768 ? 9 : 12;
 let tagsData = {};
 let tagsSet = [];
@@ -21,10 +18,8 @@ async function createGallery() {
     const response = await fetchRecipeData(id);
     return response;
   });
-
-  const recipes = await Promise.all(recipePromises);
-
-  recipes.forEach(({ _id, tags }) => {
+  const recipesAllTags = await Promise.all(recipePromises);
+  recipesAllTags.forEach(({ _id, tags }) => {
     tags.forEach(tag => {
       if (tagsData[tag]) {
         tagsData[tag].push(_id);
@@ -34,7 +29,7 @@ async function createGallery() {
     });
   });
   tagsSet = new Set();
-  recipes.forEach(({ tags }) => {
+  recipesAllTags.forEach(({ tags }) => {
     tags.forEach(tag => {
       if (!dataStor.includes(tag) && tag !== '') {
         tagsSet.add(tag);
@@ -50,9 +45,8 @@ async function createGallery() {
             </li>`;
     })
     .join('');
-  tagsEl.innerHTML = tagEl;
-
-  createCards(recipes);
+  tagsEl.innerHTML += tagEl;
+  createCards(recipesAllTags);
 }
 
 async function updateGalleryByTag(selectedTag) {
@@ -64,9 +58,8 @@ async function updateGalleryByTag(selectedTag) {
     const response = await fetchRecipeData(id);
     return response;
   });
-  const recipes = await Promise.all(recipePromises);
-
-  createCards(recipes);
+  const recipesByTeg = await Promise.all(recipePromises);
+  createCards(recipesByTeg);
 }
 
 function createCards(recipes) {
@@ -83,7 +76,6 @@ function createCards(recipes) {
               : rating - activeStars;
           const sizeStar =
             window.innerWidth < 768 ? 16 : window.innerWidth < 1200 ? 12 : 14;
-
           if (i < activeStars) {
             return `<svg class="star-icon-active star" width="${sizeStar}" height="${sizeStar}">
                           <use href="${sprite}#star" style="fill: rgba(238, 161, 12, 1)"></use>
@@ -131,7 +123,7 @@ function createCards(recipes) {
         createDataCard(id);
         setTimeout(function () {
           isButtonClicked = false;
-        }, 0);
+        }, 250);
       }
     });
   });
@@ -170,30 +162,43 @@ function createCards(recipes) {
     });
   });
 
-  const heroEl = document.querySelector('.favorites-hero-mobile');
+  const heroEl = document.querySelector('.favorites-hero');
+  const zeroEl = document.querySelector('.favorites-zero');
   if (galleryEl.innerHTML === '') {
     heroEl.classList.remove('active');
-    zeroEl.classList.remove('active');
+    zeroEl.classList.add('active');
   } else {
     heroEl.classList.add('active');
-    zeroEl.classList.add('active');
+    zeroEl.classList.remove('active');
   }
 
   const waginaEl = document.querySelector('.pagination-wrapper');
   if (
-    recipes.length < 10 ||
-    dataStor.length < 10 ||
-    (window.innerWidth > 768 && dataStor.length < 13)
+    recipes.length < 9 ||
+    dataStor.length < 9 ||
+    (window.innerWidth > 768 && dataStor.length < 12 && recipes.length < 12)
   ) {
-    waginaEl.style.opacity = '0';
+    waginaEl.style.display = 'none';
   }
 
   const tagBtnEls = document.querySelectorAll('.favorites-tags');
+  let isClicked = false;
   tagBtnEls.forEach(function (tagBtnEl) {
     tagBtnEl.addEventListener('click', function () {
-      const selectedTag = tagBtnEl.getAttribute('data-tag');
-      pagination.reset();
-      updateGalleryByTag(selectedTag);
+      if (!isClicked) {
+        isClicked = true;
+        if (tagBtnEl.classList.contains('all-tags')) {
+          pagination.reset();
+          createGallery();
+        } else {
+          const selectedTag = tagBtnEl.getAttribute('data-tag');
+          pagination.reset();
+          updateGalleryByTag(selectedTag);
+        }
+        setTimeout(function () {
+          isClicked = false;
+        }, 250);
+      }
     });
   });
 

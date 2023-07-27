@@ -1,42 +1,3 @@
-.tags-container {
-  width: 375px;
-  margin-left: 0;
-  padding-left: 20px;
-  overflow: visible;
-}
-
-.tags {
-  overflow: scroll;
-}
-
-.tags-list {
-  display: flex;
-  padding-top: 40px;
-  overflow: visible;
-}
-
-.favorites-tags {
-  padding: 14px 18px;
-  margin-right: 12px;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 18px;
-  color: rgba(5, 5, 5, 0.3);
-  border-radius: 15px;
-  border: 1px solid rgba(5, 5, 5, 0.2);
-}
-
-.dark-theme .favorites-tags {
-  color: rgba(255, 255, 255, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.favorites-tags:hover {
-  color: var(--light-color);
-  background: var(--primary-color);
-  border: 1px solid var(--primary-color);
-}
-
 .favorites-gallery {
   width: 375px;
   margin-left: auto;
@@ -154,61 +115,6 @@
 }
 
 @media screen and (min-width: 768px) {
-  .tags-container {
-    overflow: visible;
-  }
-
-  .tags {
-    width: 768px;
-    padding-left: 32px;
-    margin-left: auto;
-    margin-right: auto;
-    overflow-x: scroll;
-  }
-
-  .tags::-webkit-scrollbar {
-    height: 15px;
-  }
-
-  .tags::-webkit-scrollbar-thumb {
-    border-radius: 16px;
-    border: 0;
-    background: inherit;
-    transition: 250ms;
-  }
-
-  .dark-theme .tags::-webkit-scrollbar-thumb {
-    border: 0;
-    background: inherit;
-    transition: 250ms;
-  }
-
-  .tags::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-color);
-    transition: 250ms;
-  }
-
-  .tags-container {
-    padding: 0;
-  }
-
-  .tags-list.tags-list-fav {
-    width: 768;
-    padding-top: 64px;
-    padding-bottom: 16px;
-  }
-
-  .favorites-tags {
-    margin-right: 15px;
-  }
-
-  .favorites-tags {
-    margin-right: 15px;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 18px;
-  }
-
   .favorites-gallery {
     width: 768px;
   }
@@ -253,15 +159,6 @@
 @media screen and (min-width: 1200px) {
   .favorites-gallery {
     width: 1080px;
-  }
-
-  .tags {
-    /* width: 1280px; */
-    padding-left: 100px;
-  }
-
-  .tags-list.tags-list-fav {
-    width: 1280px;
   }
 
   .favorites-list {

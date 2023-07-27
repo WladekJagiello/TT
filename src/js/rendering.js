@@ -45,6 +45,13 @@ categoryEl.addEventListener('click', function (event) {
   renderGallery();
 });
 
+function deactivateAllCategory() {
+  const categoryEls = document.querySelectorAll('.category-item');
+  categoryEls.forEach(categoryEl => {
+    categoryEl.classList.remove('active');
+  });
+}
+
 searchInEl.addEventListener(
   'input',
   debounce(() => {
@@ -72,6 +79,17 @@ resetEl.addEventListener('click', function () {
   filter.setTitle('');
   renderGallery();
 });
+
+function activeAllCategory() {
+  if (
+    timeValueEl.textContent === '0 min' &&
+    areaValueEl.textContent === 'Region' &&
+    ingredientValueEl.textContent === 'Product' &&
+    optionCategopy === false
+  ) {
+    allCategoryEl.classList.add('active');
+  }
+}
 
 timeEl.addEventListener('click', function (event) {
   allCategoryEl.classList.remove('active');
@@ -130,28 +148,9 @@ pagination.on('afterMove', async event => {
   createGallery(uniqueResults);
 });
 
-function activeAllCategory() {
-  if (
-    timeValueEl.textContent === '0 min' &&
-    areaValueEl.textContent === 'Region' &&
-    ingredientValueEl.textContent === 'Product' &&
-    optionCategopy === false
-  ) {
-    allCategoryEl.classList.add('active');
-  }
-}
-
-function deactivateAllCategory() {
-  const categoryEls = document.querySelectorAll('.category-item');
-  categoryEls.forEach(categoryEl => {
-    categoryEl.classList.remove('active');
-  });
-}
-
 function paginationHide(totalItems) {
   const paginaEl = document.querySelector('.pagination-wrapper');
   const footerEl = document.querySelector('.footer');
-
   if (
     (totalItems < 7 && window.innerWidth < 768) ||
     (totalItems < 9 && window.innerWidth < 1200) ||
