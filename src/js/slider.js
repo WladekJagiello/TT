@@ -1,13 +1,10 @@
-import Swiper from "swiper";
-import { Autoplay, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/autoplay";
-import "swiper/css/pagination";
+import Swiper from "swiper/bundle";
+import "../../node_modules/swiper/swiper-bundle.min.css";
 import { fetchEvents } from "./APIrequests";
 
 // ####### markup slider #######
 
-async function getData() {
+async function markapSlide() {
   const swiperEl = document.querySelector(".swiper-wrapper");
   const events = await fetchEvents();
   const slide = events
@@ -40,20 +37,16 @@ async function getData() {
     .join("");
   swiperEl.innerHTML += slide;
 }
-getData();
 
-new Swiper(".swiper", {
-  modules: [Pagination, Autoplay],
+const swiper = new Swiper(".swiper", {
+  allowSlideNext: true,
   pagination: {
     el: ".swiper-pagination",
-    type: "bullets",
     clickable: true,
   },
   autoplay: {
-    delay: 2500,
-    disableOnInteraction: false,
-  },
-  mousewheel: {
-    invert: true,
+    delay: 1500,
   },
 });
+
+markapSlide();

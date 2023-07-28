@@ -22,7 +22,7 @@ let optionCategopy;
 
 allCategoryEl.addEventListener("click", function () {
   isClicked = true;
-  // deactivateCategory();
+  deactivateCategory();
   optionCategopy = false;
   allCategoryEl.classList.add("active");
   timeValueEl.textContent = "0 min";

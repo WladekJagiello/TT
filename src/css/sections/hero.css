@@ -231,8 +231,8 @@
   object-position: left -164px top -120px;
 }
 
-.swiper.my-swiper .swiper-pagination.my-pagination {
-  transform: translate(-12.75%, 70%);
+div.swiper-pagination.my-pagination {
+  transform: translate(-12.75%, 50%);
 }
 
 .swiper-pagination-bullets .swiper-pagination-bullet {
@@ -254,7 +254,7 @@
 }
 
 span.swiper-pagination-bullet {
-  margin: 2px !important;
+  margin: 2px;
 }
 
 @media screen and (min-width: 768px) {
@@ -415,16 +415,21 @@ span.swiper-pagination-bullet {
   }
 
   .swiper-pagination.my-pagination {
-    transform: translate(-13%, 70%);
+    left: 20px;
+    bottom: 20px;
+    width: 100px;
+    height: 20px;
+    transform: translate(300%, 70%);
   }
 
   .swiper-pagination-bullets .swiper-pagination-bullet {
     width: 5px;
     height: 5px;
+    color: var(--black-color);
   }
 
   span.swiper-pagination-bullet {
-    margin: 2.5px !important;
+    margin: 2.5px;
   }
 }
 
