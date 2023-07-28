@@ -231,8 +231,8 @@
   object-position: left -164px top -120px;
 }
 
-.swiper-pagination.my-pagination {
-  transform: translate(-13%, 40%);
+.swiper.my-swiper .swiper-pagination.my-pagination {
+  transform: translate(-12.75%, 70%);
 }
 
 .swiper-pagination-bullets .swiper-pagination-bullet {
