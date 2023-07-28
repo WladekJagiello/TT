@@ -1,71 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-            rel="icon"
-            type="image/png"
-            href="./images/favicon-32x32.png"
-            style="border-radius: 50%"
-        />
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
-        />
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="./images/favicon-32x32.png"
+      style="border-radius: 50%"
+    />
 
-        <title>TestyTreats</title>
-    </head>
+    <title>TestyTreats</title>
+  </head>
 
-    <body id="home">
-        <load ="partials/header.html" />
+  <body id="home">
+    <load ="partials/header.html" />
 
-        <load ="partials/hero.html" />
+    <load ="partials/hero.html" />
 
-        <section class="gallery-filters">
-            <div class="container filters-container">
-                <load ="partials/categories.html" />
+    <section class="gallery-filters">
+      <div class="container filters-container">
+        <load ="partials/categories.html" />
 
-                <div class="gallery-wrapper">
-                    <load ="partials/filters.html" />
+        <div class="gallery-wrapper">
+          <load ="partials/filters.html" />
 
-                    <div class="gallery-container">
-                        <ul class="gallery-list">
-                            <!-- https://meme-arsenal.com/create/template/230374 -->
-                            <!-- ####### markup in gallery.js ####### -->
-                        </ul>
-                    </div>
-                </div>
-            </div>
+          <div class="gallery-container">
+            <ul class="gallery-list">
+              <!-- https://meme-arsenal.com/create/template/230374 -->
+              <!-- ####### markup in gallery.js ####### -->
+            </ul>
+          </div>
+        </div>
+      </div>
 
-            <div class="pagination-wrapper">
-                <div class="tui-pagination" id="pagination">
-                    <!-- ####### markup in rendering.js ####### -->
-                </div>
-            </div>
+      <div class="pagination-wrapper">
+        <div class="tui-pagination" id="pagination">
+          <!-- ####### markup in rendering.js ####### -->
+        </div>
+      </div>
 
-            <div class="popular-recipes-mobile">
-                <h2 class="popular-recipes-title">popular recipes</h2>
+      <div class="popular-recipes-mobile">
+        <h2 class="popular-recipes-title">popular recipes</h2>
 
-                <ul class="recipes-list">
-                    <!-- ####### markup in popular-recipes.js ####### -->
-                </ul>
-            </div>
+        <ul class="recipes-list">
+          <!-- ####### markup in popular-recipes.js ####### -->
+        </ul>
+      </div>
 
-            <section class="footer"></section>
-        </section>
+      <section class="footer"></section>
+    </section>
 
-        <!-- ####### modals ####### -->
+    <!-- ####### modals ####### -->
 
-        <load ="partials/mobile-menu.html" />
+    <load ="partials/mobile-menu.html" />
 
-        <load ="partials/order-now.html" />
+    <load ="partials/order-now.html" />
 
-        <load ="partials/see-recipe.html" />
+    <load ="partials/see-recipe.html" />
 
-        <load ="partials/give-rating.html" />
+    <load ="partials/give-rating.html" />
 
-        <script type="module" src="/index.js"></script>
-    </body>
+    <script type="module" src="/index.js"></script>
+  </body>
 </html>
