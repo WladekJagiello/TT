@@ -3,6 +3,7 @@ import debounce from "lodash.debounce";
 import Pagination from "tui-pagination";
 import { allRecipes } from "./APIrequests";
 import { createGallery } from "./gallery";
+import { deactivateCategory } from "./markup-filters";
 
 const filter = new allRecipes();
 const ingredientValueEl = document.querySelector(".ingredient-placeholder");
@@ -37,10 +38,8 @@ allCategoryEl.addEventListener("click", function () {
   renderGallery();
 });
 
-const categoryEls = document.querySelectorAll(".category-item");
 categoriesEl.addEventListener("click", function (event) {
   deactivateCategory();
-  console.log(event.target);
   const category = event.target.textContent;
   optionCategopy = true;
   allCategoryEl.classList.remove("active");
@@ -48,12 +47,6 @@ categoriesEl.addEventListener("click", function (event) {
   renderGallery();
   event.target.classList.add("active");
 });
-
-function deactivateCategory() {
-  categoryEls.forEach((categoryEl) => {
-    categoryEl.classList.remove("active");
-  });
-}
 
 searchInEl.addEventListener(
   "input",

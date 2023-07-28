@@ -1,5 +1,6 @@
 import Swiper from "swiper/bundle";
-import "../../node_modules/swiper/swiper-bundle.min.css";
+// import "../../node_modules/swiper/swiper-bundle.min.css";
+import "swiper/css/bundle";
 import { fetchEvents } from "./APIrequests";
 
 // ####### markup slider #######
@@ -35,18 +36,20 @@ async function markapSlide() {
             </div>`;
     })
     .join("");
-  swiperEl.innerHTML += slide;
+  swiperEl.insertAdjacentHTML("beforeend", slide);
+  // swiperEl.innerHTML += slide;
 }
+markapSlide();
 
 const swiper = new Swiper(".swiper", {
   allowSlideNext: true,
   pagination: {
     el: ".swiper-pagination",
+    type: "bullets",
     clickable: true,
   },
   autoplay: {
-    delay: 1500,
+    delay: 2500,
+    disableOnInteraction: false,
   },
 });
-
-markapSlide();

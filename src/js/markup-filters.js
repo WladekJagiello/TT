@@ -113,3 +113,10 @@ createIngredientsList();
 createCategoriesList();
 createAreasList();
 createTimeList();
+
+export function deactivateCategory() {
+  const categoryEls = document.querySelectorAll(".category-item");
+  categoryEls.forEach((categoryEl) => {
+    categoryEl.classList.remove("active");
+  });
+}
