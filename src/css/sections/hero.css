@@ -232,7 +232,7 @@
 }
 
 div.swiper-pagination.my-pagination {
-  transform: translate(-12.75%, 50%);
+  transform: translate(-12.75%, 70%);
 }
 
 .swiper-pagination-bullets .swiper-pagination-bullet {
@@ -254,7 +254,7 @@ div.swiper-pagination.my-pagination {
 }
 
 span.swiper-pagination-bullet {
-  margin: 2px;
+  margin: 2px !important;
 }
 
 @media screen and (min-width: 768px) {
@@ -429,7 +429,7 @@ span.swiper-pagination-bullet {
   }
 
   span.swiper-pagination-bullet {
-    margin: 2.5px;
+    margin: 2.5px !important;
   }
 }
 
