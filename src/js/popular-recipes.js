@@ -1,12 +1,12 @@
-import { fetchPopularRecipes } from './APIrequests';
+import { fetchPopularRecipes } from "./APIrequests";
 
 // ####### markup popular-recipes-list #######
 
 async function createPopularList() {
-  const containerEls = document.querySelectorAll('.recipes-list');
+  const containerEls = document.querySelectorAll(".recipes-list");
   const results = await fetchPopularRecipes();
   const cardEl = results
-    .flatMap(result => {
+    .flatMap((result) => {
       const { _id, title, preview, description } = result;
       return `
       <li class="card-popular" >   
@@ -20,9 +20,24 @@ async function createPopularList() {
       </li>
     `;
     })
-    .join('');
-  containerEls.forEach(containerEl => {
-    containerEl.insertAdjacentHTML('beforeend', cardEl);
+    .join("");
+  containerEls.forEach((containerEl) => {
+    containerEl.insertAdjacentHTML("beforeend", cardEl);
+  });
+
+  const buttonEls = document.querySelectorAll(".see-recipe");
+  let isClicked = false;
+  buttonEls.forEach(function (buttonEl) {
+    buttonEl.addEventListener("click", function () {
+      if (!isClicked) {
+        isClicked = true;
+        const id = buttonEl.getAttribute("id");
+        createDataCard(id);
+      }
+      setTimeout(function () {
+        isClicked = false;
+      }, 250);
+    });
   });
 }
 createPopularList();
