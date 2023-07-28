@@ -1,10 +1,15 @@
-import Swiper from "swiper/bundle";
-import "../../node_modules/swiper/swiper-bundle.min.css";
+import Swiper from "swiper";
+import { Autoplay, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/autoplay";
+import "swiper/css/pagination";
+// import "../../node_modules/swiper/swiper-bundle.min.css";
 import { fetchEvents } from "./APIrequests";
 
 // ####### markup slider #######
 
 new Swiper(".swiper", {
+  modules: [Pagination, Autoplay],
   pagination: {
     el: ".swiper-pagination",
     type: "bullets",

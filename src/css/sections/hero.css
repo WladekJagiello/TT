@@ -253,9 +253,9 @@
   background: var(--primary-color);
 }
 
-/* span.swiper-pagination-bullet {
+span.swiper-pagination-bullet {
   margin: 2px !important;
-} */
+}
 
 @media screen and (min-width: 768px) {
   .hero {
@@ -414,7 +414,7 @@
     object-position: left -200px top -140px;
   }
 
-  /* .swiper-pagination.my-pagination {
+  .swiper-pagination.my-pagination {
     transform: translate(-13%, 70%);
   }
 
@@ -425,7 +425,7 @@
 
   span.swiper-pagination-bullet {
     margin: 2.5px !important;
-  } */
+  }
 }
 
 @media screen and (min-width: 1200px) {
