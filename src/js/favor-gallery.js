@@ -25,33 +25,35 @@ async function createGallery() {
   createCards(AllFavorites, totalCards);
 }
 
-const tagsEl = document.querySelector('.favor-tags-list');
-const AllPromises = dataStor.map(async id => {
-  const response = await fetchRecipeData(id);
-  return response;
-});
-const recipesAllTags = await Promise.all(AllPromises);
-tagsData = recipesAllTags.reduce((result, { _id, tags }) => {
-  tags.forEach(tag => {
-    if (tag !== '' && !result[tag]) {
-      result[tag] = [_id];
-    } else if (tag !== '' && !result[tag].includes(_id)) {
-      result[tag].push(_id);
-    }
+async function createTagsList() {
+  const tagsEl = document.querySelector('.favor-tags-list');
+  const AllPromises = dataStor.map(async id => {
+    const response = await fetchRecipeData(id);
+    return response;
   });
-  return result;
-}, {});
-const tagEl = Object.keys(tagsData)
-  .sort()
-  .map(tag => {
-    return `<li class="tags-item">
+  const recipesAllTags = await Promise.all(AllPromises);
+  tagsData = recipesAllTags.reduce((result, { _id, tags }) => {
+    tags.forEach(tag => {
+      if (tag !== '' && !result[tag]) {
+        result[tag] = [_id];
+      } else if (tag !== '' && !result[tag].includes(_id)) {
+        result[tag].push(_id);
+      }
+    });
+    return result;
+  }, {});
+  const tagEl = Object.keys(tagsData)
+    .sort()
+    .map(tag => {
+      return `<li class="tags-item">
           <button class="favorites-tags" type="button" data-tag="${tag}">
             ${tag}
           </button>
         </li>`;
-  })
-  .join('');
-tagsEl.innerHTML += tagEl;
+    })
+    .join('');
+  tagsEl.innerHTML += tagEl;
+}
 
 async function galleryByTag(selectedTag) {
   const filteredRecipeIds = tagsData[selectedTag] || [];
@@ -253,4 +255,5 @@ pagination.on('afterMove', event => {
   createGallery();
 });
 
+createTagsList();
 createGallery();

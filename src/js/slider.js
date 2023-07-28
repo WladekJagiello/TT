@@ -1,16 +1,16 @@
-import Swiper from 'swiper/bundle';
-import '../../node_modules/swiper/swiper-bundle.min.css';
-import 'swiper/css';
-import { fetchEvents } from './APIrequests';
+import Swiper from "swiper/bundle";
+import "../../node_modules/swiper/swiper-bundle.min.css";
+import "../css/sections/gallery.css";
+import { fetchEvents } from "./APIrequests";
 
 // ####### markup slider #######
 
 async function getData() {
-  const swiperEl = document.querySelector('.swiper-wrapper');
-  const events = await fetchEvents();
-  const slide = events
-    .map((event, index) => {
-      return `<div class="swiper-slide">
+    const swiperEl = document.querySelector(".swiper-wrapper");
+    const events = await fetchEvents();
+    const slide = events
+        .map((event, index) => {
+            return `<div class="swiper-slide">
           <div class="my-slide">
             <div class="card-cook">
               <div class="wrapper-cook">
@@ -34,19 +34,19 @@ async function getData() {
             </div>
           </div>
         </div>`;
-    })
-    .join('');
-  swiperEl.innerHTML += slide;
+        })
+        .join("");
+    swiperEl.innerHTML += slide;
 }
 getData();
 
-const swiper = new Swiper('.swiper', {
-  pagination: {
-    el: '.swiper-pagination',
-    clickable: true,
-  },
+const swiper = new Swiper(".swiper", {
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
 
-  autoplay: {
-    delay: 2500,
-  },
+    autoplay: {
+        delay: 2500,
+    },
 });
