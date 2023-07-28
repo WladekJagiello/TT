@@ -2,6 +2,7 @@ body {
   font-family: 'Inter', sans-serif;
   background: var(--light-color);
   transition: 250ms;
+  overflow-x: hidden;
 }
 
 body.dark-theme {
@@ -11,7 +12,6 @@ body.dark-theme {
 
 .container {
   width: 335px;
-  margin: 0 auto;
   background: var(--light-color);
   overflow-x: hidden;
   transition: 250ms;
@@ -27,7 +27,7 @@ body.dark-theme {
   flex-direction: column;
   width: 375px;
   margin: 0 auto;
-  padding-top: 80px;
+  padding: 80px 20px 0;
   background: var(--light-color);
   transition: 250ms;
 }
@@ -35,14 +35,6 @@ body.dark-theme {
 .dark-theme .gallery-filters {
   background: var(--dark-color);
   transition: 250ms;
-}
-
-.footer {
-  height: 0;
-}
-
-.footer.active {
-  height: 80px;
 }
 
 @media screen and (min-width: 768px) {
@@ -72,19 +64,11 @@ body.dark-theme {
   .gallery-container {
     padding-top: 32px;
   }
-
-  .footer {
-    height: 0;
-  }
-
-  .footer.active {
-    height: 100px;
-  }
 }
 
 @media screen and (min-width: 1200px) {
-  body {
-    overflow-x: hidden;
+  .gallery-filters {
+    padding: 100px 100px 0;
   }
 
   body::-webkit-scrollbar {

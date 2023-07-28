@@ -1,7 +1,7 @@
 .favorites-gallery {
   width: 375px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .favorites-gallery-container {
@@ -117,6 +117,7 @@
 @media screen and (min-width: 768px) {
   .favorites-gallery {
     width: 768px;
+    padding: 0 32px;
   }
 
   .favorites-list {
@@ -158,7 +159,8 @@
 
 @media screen and (min-width: 1200px) {
   .favorites-gallery {
-    width: 1080px;
+    width: 1280px;
+    padding: 0 100px;
   }
 
   .favorites-list {

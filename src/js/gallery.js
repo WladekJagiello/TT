@@ -60,17 +60,17 @@ export async function createGallery(results) {
   galleryEl.insertAdjacentHTML('beforeend', cardEl);
 
   const buttonEls = document.querySelectorAll('.see-recipe');
-  let isButtonClicked = false;
+  let isClicked = false;
   buttonEls.forEach(function (buttonEl) {
     buttonEl.addEventListener('click', function () {
-      if (!isButtonClicked) {
-        isButtonClicked = true;
+      if (!isClicked) {
+        isClicked = true;
         const id = buttonEl.getAttribute('id');
         createDataCard(id);
-        setTimeout(function () {
-          isButtonClicked = false;
-        }, 250);
       }
+      setTimeout(function () {
+        isClicked = false;
+      }, 250);
     });
   });
 

@@ -1,8 +1,7 @@
 .header {
   width: 375px;
   margin: 0 auto;
-  padding-top: 20.5px;
-  padding-bottom: 20.5px;
+  padding: 20px;
   background: var(--light-color);
   transition: 250ms;
 }
@@ -285,8 +284,7 @@ input:checked + .slider:before {
 @media screen and (min-width: 768px) {
   .header {
     width: 768px;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding: 31px 32px;
   }
 
   .container.header-container {
@@ -295,6 +293,7 @@ input:checked + .slider:before {
 
   .navigation {
     display: flex;
+    align-items: center;
   }
 
   .nav-link {
@@ -341,8 +340,7 @@ input:checked + .slider:before {
 @media screen and (min-width: 1200px) {
   .header {
     width: 1280px;
-    padding-top: 42px;
-    padding-bottom: 42px;
+    padding: 42px 100px;
   }
 
   .home-link {

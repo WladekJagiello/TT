@@ -8,18 +8,20 @@ const filter = new allRecipes();
 const ingredientValueEl = document.querySelector('.ingredient-placeholder');
 const allCategoryEl = document.querySelector('.button-all-categories');
 const ingredientEl = document.querySelector('.ingredient-list');
+const categoryEls = document.querySelectorAll('.category-item');
 const timeValueEl = document.querySelector('.time-placeholder');
 const areaValueEl = document.querySelector('.area-placeholder');
 const searchInEl = document.querySelector('.search-input');
-const categoryEl = document.querySelector('.categories-list');
 const galleryEl = document.querySelector('.gallery-list');
 const searchEl = document.querySelector('.search-icon');
 const resetEl = document.querySelector('.reset-btn');
 const timeEl = document.querySelector('.time-list');
 const areaEl = document.querySelector('.area-list');
+let isClicked = false;
 
 let optionCategopy;
 allCategoryEl.addEventListener('click', function () {
+  isClicked = true;
   deactivateAllCategory();
   optionCategopy = false;
   allCategoryEl.classList.add('active');
@@ -35,18 +37,24 @@ allCategoryEl.addEventListener('click', function () {
   renderGallery();
 });
 
-categoryEl.addEventListener('click', function (event) {
-  deactivateAllCategory();
-  optionCategopy = true;
-  event.target.classList.add('active');
-  allCategoryEl.classList.remove('active');
-  const category = event.target.textContent;
-  filter.setCategory(category);
-  renderGallery();
+categoryEls.forEach(function (categoryEl) {
+  categoryEl.addEventListener('click', function () {
+    if (!isClicked) {
+      deactivateAllCategory();
+      optionCategopy = true;
+      allCategoryEl.classList.remove('active');
+      const category = categoryEl.textContent;
+      filter.setCategory(category);
+      renderGallery();
+      categoryEl.classList.add('active');
+      setTimeout(function () {
+        isClicked = false;
+      }, 250);
+    }
+  });
 });
 
 function deactivateAllCategory() {
-  const categoryEls = document.querySelectorAll('.category-item');
   categoryEls.forEach(categoryEl => {
     categoryEl.classList.remove('active');
   });
@@ -150,17 +158,14 @@ pagination.on('afterMove', async event => {
 
 function paginationHide(totalItems) {
   const paginaEl = document.querySelector('.pagination-wrapper');
-  const footerEl = document.querySelector('.footer');
   if (
     (totalItems < 7 && window.innerWidth < 768) ||
     (totalItems < 9 && window.innerWidth < 1200) ||
     (totalItems < 10 && window.innerWidth > 1200)
   ) {
     paginaEl.classList.add('hide');
-    footerEl.classList.add('active');
   } else {
     paginaEl.classList.remove('hide');
-    footerEl.classList.remove('active');
   }
 }
 

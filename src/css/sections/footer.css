@@ -1,0 +1,20 @@
+.footer {
+  width: 375px;
+  height: 80px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .footer {
+    width: 768px;
+    height: 100px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .footer {
+    width: 1280px;
+    padding: 0 100px;
+  }
+}

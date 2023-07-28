@@ -13,7 +13,6 @@ body.dark-theme {
 
 .container {
   width: 335px;
-  margin: 0 auto;
   background: var(--light-color);
   transition: 250ms;
 }
@@ -29,25 +28,26 @@ body.dark-theme {
 
 .hero-container-mobile {
   width: 335px;
-  margin: 0 auto;
   height: 516px;
   background: url('../../images/fav-hero-mob.jpg');
   background-size: cover;
   border-radius: 15px;
 }
 
-.favorites-hero {
+.hero {
   display: none;
 }
 
-.favorites-hero.active {
+.hero.active {
+  width: 375px;
   display: flex;
-  padding-top: 20px;
+  margin: 0 auto;
+  padding: 20px 20px 0;
   background: var(--light-color);
   transition: 250ms;
 }
 
-.dark-theme .favorites-hero.active {
+.dark-theme .hero.active {
   background: var(--dark-color);
   transition: 250ms;
 }
@@ -57,8 +57,10 @@ body.dark-theme {
 }
 
 .favorites-zero.active {
+  width: 375px;
   display: flex;
-  margin-top: 256px;
+  margin: 0 auto;
+  padding: 256px 20px 0;
 }
 
 .favorites-icon {
@@ -90,10 +92,11 @@ body.dark-theme {
 }
 
 @media screen and (min-width: 768px) {
-  .favorites-hero,
-  .favorites-hero.active {
+  .hero,
+  .hero.active {
     display: block;
-    padding-top: 15px;
+    width: 768px;
+    padding: 15px 32px 0;
   }
 
   .container {
@@ -108,14 +111,15 @@ body.dark-theme {
     display: block;
     width: 704px;
     height: 356px;
-    margin: 0 auto;
     background: url('../../images/fav-hero-tab.jpg');
     background-size: cover;
     border-radius: 15px;
   }
 
   .favorites-zero.active {
-    margin-top: 64px;
+    width: 768px;
+    margin: 0 auto;
+    padding: 64px 32px 0;
   }
 
   .favorites-icon {
@@ -141,9 +145,10 @@ body.dark-theme {
 }
 
 @media screen and (min-width: 1200px) {
-  .favorites-hero,
-  .favorites-hero.active {
-    padding-top: 0;
+  .hero,
+  .hero.active {
+    width: 1280px;
+    padding: 0 100px;
   }
 
   .container {

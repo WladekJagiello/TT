@@ -1,7 +1,6 @@
 .pagination-wrapper {
   width: 335px;
   padding-top: 40px;
-  padding-bottom: 80px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -121,7 +120,6 @@
   .pagination-wrapper {
     width: 446px;
     padding-top: 64px;
-    padding-bottom: 100px;
   }
 
   .tui-page-btn {
@@ -146,6 +144,6 @@
 
 @media screen and (min-width: 1200px) {
   .pagination-wrapper {
-    margin-left: 565px;
+    margin-left: 464px;
   }
 }

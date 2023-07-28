@@ -1,5 +1,6 @@
 import Swiper from 'swiper/bundle';
 import '../../node_modules/swiper/swiper-bundle.min.css';
+import 'swiper/css';
 import { fetchEvents } from './APIrequests';
 
 // ####### markup slider #######

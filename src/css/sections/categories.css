@@ -29,12 +29,14 @@
 }
 
 .button-all-categories.active {
+  color: var(--dark-color);
   border: 1px solid var(--primary-color);
   transition: 250ms;
 }
 
 .dark-theme .button-all-categories.active {
   color: var(--white-color);
+  border: 1px solid var(--primary-color);
   transition: 250ms;
 }
 

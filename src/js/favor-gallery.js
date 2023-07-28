@@ -4,12 +4,14 @@ import Pagination from 'tui-pagination';
 import { createDataCard } from './see-recipe';
 import { fetchRecipeData } from './APIrequests';
 
+// localStorage.clear();
+
 const galleryEl = document.querySelector('.favorites-list');
-const tagsEl = document.querySelector('.favor-tags-list');
 const dataStor = JSON.parse(localStorage.getItem('element_data')) || [];
 const itemsPerPage = window.innerWidth < 768 ? 9 : 12;
+let isClicked = false;
 let tagsData = {};
-let tagsSet = [];
+let totalCards;
 
 async function createGallery() {
   const startIndex = (pagination.getCurrentPage() - 1) * itemsPerPage;
@@ -18,38 +20,40 @@ async function createGallery() {
     const response = await fetchRecipeData(id);
     return response;
   });
-  const recipesAllTags = await Promise.all(recipePromises);
-  recipesAllTags.forEach(({ _id, tags }) => {
-    tags.forEach(tag => {
-      if (tagsData[tag]) {
-        tagsData[tag].push(_id);
-      } else {
-        tagsData[tag] = [_id];
-      }
-    });
-  });
-  tagsSet = new Set();
-  recipesAllTags.forEach(({ tags }) => {
-    tags.forEach(tag => {
-      if (!dataStor.includes(tag) && tag !== '') {
-        tagsSet.add(tag);
-      }
-    });
-  });
-  const tagEl = Array.from(tagsSet)
-    .map(tag => {
-      return `<li class="tags-item">
-              <button class="favorites-tags" type="button" data-tag="${tag}">
-                ${tag}
-              </button>
-            </li>`;
-    })
-    .join('');
-  tagsEl.innerHTML += tagEl;
-  createCards(recipesAllTags);
+  const AllFavorites = await Promise.all(recipePromises);
+  totalCards = dataStor.length;
+  createCards(AllFavorites, totalCards);
 }
 
-async function updateGalleryByTag(selectedTag) {
+const tagsEl = document.querySelector('.favor-tags-list');
+const AllPromises = dataStor.map(async id => {
+  const response = await fetchRecipeData(id);
+  return response;
+});
+const recipesAllTags = await Promise.all(AllPromises);
+tagsData = recipesAllTags.reduce((result, { _id, tags }) => {
+  tags.forEach(tag => {
+    if (tag !== '' && !result[tag]) {
+      result[tag] = [_id];
+    } else if (tag !== '' && !result[tag].includes(_id)) {
+      result[tag].push(_id);
+    }
+  });
+  return result;
+}, {});
+const tagEl = Object.keys(tagsData)
+  .sort()
+  .map(tag => {
+    return `<li class="tags-item">
+          <button class="favorites-tags" type="button" data-tag="${tag}">
+            ${tag}
+          </button>
+        </li>`;
+  })
+  .join('');
+tagsEl.innerHTML += tagEl;
+
+async function galleryByTag(selectedTag) {
   const filteredRecipeIds = tagsData[selectedTag] || [];
   const filteredData = dataStor.filter(recipeId =>
     filteredRecipeIds.includes(recipeId)
@@ -59,10 +63,11 @@ async function updateGalleryByTag(selectedTag) {
     return response;
   });
   const recipesByTeg = await Promise.all(recipePromises);
-  createCards(recipesByTeg);
+  totalCards = recipesByTeg.length;
+  createCards(recipesByTeg, totalCards);
 }
 
-function createCards(recipes) {
+function createCards(recipes, totalCards) {
   galleryEl.innerHTML = '';
   const cardEl = recipes
     .map(({ _id, title, rating, preview, description }) => {
@@ -113,87 +118,45 @@ function createCards(recipes) {
     .join('');
   galleryEl.insertAdjacentHTML('beforeend', cardEl);
 
-  const buttonEls = document.querySelectorAll('.see-recipe');
-  let isButtonClicked = false;
-  buttonEls.forEach(function (buttonEl) {
-    buttonEl.addEventListener('click', function () {
-      if (!isButtonClicked) {
-        isButtonClicked = true;
-        const id = buttonEl.getAttribute('id');
-        createDataCard(id);
-        setTimeout(function () {
-          isButtonClicked = false;
-        }, 250);
-      }
-    });
-  });
-
-  const backdropEl = document.querySelector('.see-backdrop');
-  const deletEls = document.querySelectorAll('.remuve');
-  deletEls.forEach(deletEl => {
-    deletEl.addEventListener('click', function () {
-      const id = deletEl.getAttribute('id');
-      const index = dataStor.indexOf(id);
-      Notiflix.Confirm.show(
-        'CHANGE YOUR MIND!',
-        'Remove recipe from collection?',
-        'Yes',
-        'No',
-        function okCb() {
-          if (index !== -1) {
-            dataStor.splice(index, 1);
-            localStorage.setItem('element_data', JSON.stringify(dataStor));
-            pagination.reset(dataStor.length);
-            backdropEl.classList.remove('active');
-            document.body.style.overflow = '';
-            createGallery();
-          }
-          Notiflix.Notify.success('Slava Ukraine!');
-        },
-        function cancelCb() {
-          Notiflix.Notify.success('Slava Ukraine!');
-          return;
-        },
-        {
-          width: '335px',
-          borderRadius: '15px',
-        }
-      );
-    });
-  });
-
-  const heroEl = document.querySelector('.favorites-hero');
+  const heroEl = document.querySelector('.hero');
   const zeroEl = document.querySelector('.favorites-zero');
+  const allTagsBtnEl = document.querySelector('.all-tags');
   if (galleryEl.innerHTML === '') {
     heroEl.classList.remove('active');
     zeroEl.classList.add('active');
+    allTagsBtnEl.style.display = 'none';
   } else {
     heroEl.classList.add('active');
     zeroEl.classList.remove('active');
+    allTagsBtnEl.display = 'flex';
   }
 
   const waginaEl = document.querySelector('.pagination-wrapper');
   if (
-    recipes.length < 9 ||
-    dataStor.length < 9 ||
-    (window.innerWidth > 768 && dataStor.length < 12 && recipes.length < 12)
+    (window.innerWidth < 768 && totalCards < 10) ||
+    (window.innerWidth > 768 && totalCards < 13)
   ) {
     waginaEl.style.display = 'none';
+  } else {
+    waginaEl.style.display = 'flex';
   }
 
   const tagBtnEls = document.querySelectorAll('.favorites-tags');
-  let isClicked = false;
   tagBtnEls.forEach(function (tagBtnEl) {
     tagBtnEl.addEventListener('click', function () {
       if (!isClicked) {
         isClicked = true;
         if (tagBtnEl.classList.contains('all-tags')) {
+          deactivateActive();
+          tagBtnEl.classList.add('active');
           pagination.reset();
           createGallery();
         } else {
           const selectedTag = tagBtnEl.getAttribute('data-tag');
+          deactivateActive();
+          tagBtnEl.classList.add('active');
           pagination.reset();
-          updateGalleryByTag(selectedTag);
+          galleryByTag(selectedTag);
         }
         setTimeout(function () {
           isClicked = false;
@@ -202,13 +165,64 @@ function createCards(recipes) {
     });
   });
 
-  tagsSet.forEach((recipes, tag) => {
-    const tagButton = document.querySelector(`button[data-tag="${tag}"]`);
-    if (recipes.length === 0) {
-      tagButton.classList.add('inactive-tag');
-    } else {
-      tagButton.classList.remove('inactive-tag');
-    }
+  function deactivateActive() {
+    tagBtnEls.forEach(tagBtnEl => {
+      tagBtnEl.classList.remove('active');
+    });
+  }
+
+  const buttonEls = document.querySelectorAll('.see-recipe');
+  buttonEls.forEach(function (buttonEl) {
+    buttonEl.addEventListener('click', function () {
+      if (!isClicked) {
+        isClicked = true;
+        const id = buttonEl.getAttribute('id');
+        createDataCard(id);
+      }
+      setTimeout(function () {
+        isClicked = false;
+      }, 250);
+    });
+  });
+
+  const backdropEl = document.querySelector('.see-backdrop');
+  const deletEls = document.querySelectorAll('.remuve');
+  deletEls.forEach(deletEl => {
+    deletEl.addEventListener('click', function () {
+      if (!isClicked) {
+        isClicked = true;
+        const id = deletEl.getAttribute('id');
+        const index = dataStor.indexOf(id);
+        Notiflix.Confirm.show(
+          'CHANGE YOUR MIND!',
+          'Remove recipe from collection?',
+          'Yes',
+          'No',
+          function okCb() {
+            if (index !== -1) {
+              dataStor.splice(index, 1);
+              localStorage.setItem('element_data', JSON.stringify(dataStor));
+              pagination.reset(dataStor.length);
+              backdropEl.classList.remove('active');
+              document.body.style.overflow = '';
+              createGallery();
+            }
+            Notiflix.Notify.success('Slava Ukraine!');
+          },
+          function cancelCb() {
+            Notiflix.Notify.success('Slava Ukraine!');
+            return;
+          },
+          {
+            width: '335px',
+            borderRadius: '15px',
+          }
+        );
+      }
+      setTimeout(function () {
+        isClicked = false;
+      }, 250);
+    });
   });
 }
 

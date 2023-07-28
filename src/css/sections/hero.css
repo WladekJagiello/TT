@@ -1,7 +1,7 @@
 .hero {
   width: 375px;
   margin: 0 auto;
-  padding-top: 64px;
+  padding: 64px 20px 0;
   overflow: hidden;
   background: var(--light-color);
   transition: 250ms;
@@ -232,7 +232,7 @@
 }
 
 .swiper-pagination.my-pagination {
-  transform: translate(-13%, 60%);
+  transform: translate(-13%, 70%);
 }
 
 .swiper-pagination-bullets .swiper-pagination-bullet {
@@ -253,14 +253,14 @@
   background: var(--primary-color);
 }
 
-.swiper-pagination-bullet {
-  margin: 0 var(--swiper-pagination-bullet-horizontal-gap, 1.5px) !important;
+span.swiper-pagination-bullet {
+  margin: 2px !important;
 }
 
 @media screen and (min-width: 768px) {
   .hero {
     width: 768px;
-    padding-top: 57px;
+    padding: 57px 32px 0;
   }
 
   .hero-info {
@@ -415,7 +415,7 @@
   }
 
   .swiper-pagination.my-pagination {
-    transform: translate(-13%, 60%);
+    transform: translate(-13%, 70%);
   }
 
   .swiper-pagination-bullets .swiper-pagination-bullet {
@@ -423,15 +423,15 @@
     height: 5px;
   }
 
-  .swiper-pagination-bullet {
-    margin-right: 4px;
+  span.swiper-pagination-bullet {
+    margin: 2.5px !important;
   }
 }
 
 @media screen and (min-width: 1200px) {
   .hero {
     width: 1280px;
-    padding-top: 52px;
+    padding: 52px 100px 0;
     overflow: visible;
   }
 
