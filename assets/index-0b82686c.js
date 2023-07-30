@@ -2,11 +2,10 @@ import{a as pt,b as mt,d as ht,e as gt,g as vt,h as ge,s as ve,N as Ue,c as wt,P
         translate3d(${m}, ${h}, ${S}px)
         rotateZ(${u.rotate?n?-x:x:0}deg)
         scale(${I})
-      `;if(u.slideShadows){let w=y.querySelector(".swiper-slide-shadow");w||(w=ae("cards",y)),w&&(w.style.opacity=Math.min(Math.max((Math.abs(g)-.5)/.5,0),1))}y.style.zIndex=-Math.abs(Math.round(v))+f.length;const T=pe(u,y);T.style.transform=C}},setTransition:f=>{const o=e.slides.map(n=>re(n));o.forEach(n=>{n.style.transitionDuration=`${f}ms`,n.querySelectorAll(".swiper-slide-shadow").forEach(u=>{u.style.transitionDuration=`${f}ms`})}),xe({swiper:e,duration:f,transformElements:o})},perspective:()=>!0,overwriteParams:()=>({watchSlidesProgress:!0,virtualTranslate:!e.params.cssMode})})}const ui=[Bs,Xs,Ns,qs,Rs,Ys,Vs,Ws,Fs,js,_s,Us,Ks,Zs,Js,Qs,ai,ni,li,oi,di,ci,fi];V.use(ui);async function pi(){const t=document.querySelector(".swiper-wrapper"),s=(await pt()).map((i,a)=>`<div class="swiper-slide">
-          <div class="my-slide">
-            <div class="card-cook">
-              <div class="wrapper-cook">
-                <img class="event-cook-${a}" src="${i.cook.imgUrl}" alt="${i.cook.name}" />
+      `;if(u.slideShadows){let w=y.querySelector(".swiper-slide-shadow");w||(w=ae("cards",y)),w&&(w.style.opacity=Math.min(Math.max((Math.abs(g)-.5)/.5,0),1))}y.style.zIndex=-Math.abs(Math.round(v))+f.length;const T=pe(u,y);T.style.transform=C}},setTransition:f=>{const o=e.slides.map(n=>re(n));o.forEach(n=>{n.style.transitionDuration=`${f}ms`,n.querySelectorAll(".swiper-slide-shadow").forEach(u=>{u.style.transitionDuration=`${f}ms`})}),xe({swiper:e,duration:f,transformElements:o})},perspective:()=>!0,overwriteParams:()=>({watchSlidesProgress:!0,virtualTranslate:!e.params.cssMode})})}const ui=[Bs,Xs,Ns,qs,Rs,Ys,Vs,Ws,Fs,js,_s,Us,Ks,Zs,Js,Qs,ai,ni,li,oi,di,ci,fi];V.use(ui);async function pi(){const t=document.querySelectorAll(".swiper-slide"),s=(await pt()).map((i,a)=>`<div class="my-slide">
+              <div class="card-cook">
+                <div class="wrapper-cook">
+                  <img class="event-cook-${a}" src="${i.cook.imgUrl}" alt="${i.cook.name}" />
                 </div>
               </div>
 
@@ -23,9 +22,7 @@ import{a as pt,b as mt,d as ht,e as gt,g as vt,h as ge,s as ve,N as Ue,c as wt,P
                   <img class="event-img-${a}" src="${i.topic.imgUrl}" alt="${i.topic.name}" />
                 </div>
               </div>
-            </div>
-            </div>
-            </div>`).join("");t.insertAdjacentHTML("beforeend",s)}pi();new V(".swiper",{allowSlideNext:!0,pagination:{el:".swiper-pagination",type:"bullets",clickable:!0},autoplay:{delay:2500,disableOnInteraction:!1}});async function mi(){const t=document.querySelector(".categories-list"),e=await mt();e.sort();const s=e.map(({name:i})=>`<button class="category-item" type="button">${i}</button>`).join("");t.insertAdjacentHTML("beforeend",s)}async function hi(){const t=document.querySelector(".time-input"),e=document.querySelector(".time-icon"),s=document.querySelector(".time-placeholder"),i=document.querySelector(".time-list");for(let r=5;r<=120;r+=5){const f=`<li>
+            </div>`);t.forEach((i,a)=>{i.innerHTML=s[a]})}new V(".swiper",{allowSlideNext:!0,pagination:{el:".swiper-pagination",type:"bullets",clickable:!0},autoplay:{delay:2500,disableOnInteraction:!1}});pi();async function mi(){const t=document.querySelector(".categories-list"),e=await mt();e.sort();const s=e.map(({name:i})=>`<button class="category-item" type="button">${i}</button>`).join("");t.insertAdjacentHTML("beforeend",s)}async function hi(){const t=document.querySelector(".time-input"),e=document.querySelector(".time-icon"),s=document.querySelector(".time-placeholder"),i=document.querySelector(".time-list");for(let r=5;r<=120;r+=5){const f=`<li>
                       <button class="time-item" type="button">${r} min</button>
                     </li>`;i.insertAdjacentHTML("beforeend",f)}t.addEventListener("click",()=>{i.classList.toggle("active"),e.classList.toggle("active")}),document.querySelectorAll(".time-item").forEach(function(r){r.addEventListener("click",function(){s.textContent=r.textContent,s.classList.add("active")})})}async function gi(){const t=document.querySelector(".area-input"),e=document.querySelector(".area-icon"),s=document.querySelector(".area-placeholder"),i=document.querySelector(".area-list"),a=await ht();a.sort();const r=a.map(o=>`<li>
                  <button class="area-item" type="button">${o}</button>
